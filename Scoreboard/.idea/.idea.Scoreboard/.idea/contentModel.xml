@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Erik Espuñes Juberó\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Erik Espuñes Juberó\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Scoreboard.-1280500523.00" t="ExcludeRecursive" />
+    <e p="D:\OneDrive\Projectes\Scoreboard\Scoreboard" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="SeasonGeneratorEdit.cs" t="Include" />
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="Ardity" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Samples" t="Include">
+                <e p="SampleCustomDelimiter.cs" t="Include" />
+                <e p="SampleMessageListener.cs" t="Include" />
+                <e p="SampleTearDown.cs" t="Include" />
+                <e p="SampleUserPolling_JustRead.cs" t="Include" />
+                <e p="SampleUserPolling_ReadWrite.cs" t="Include" />
+              </e>
+              <e p="SerialController.cs" t="Include" />
+              <e p="SerialControllerCustomDelimiter.cs" t="Include" />
+              <e p="Threads" t="Include">
+                <e p="AbstractSerialThread.cs" t="Include" />
+                <e p="SerialThread.cs" t="Include" />
+                <e p="SerialThreadCustomDelimiter.cs" t="Include" />
+                <e p="SerialThreadLines.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Sixpolys" t="Include">
+            <e p="SIXP Autosaver" t="Include">
+              <e p="Editor" t="Include">
+                <e p="AutoSave.cs" t="Include" />
+                <e p="AutoSavePreferences.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Resources" t="Include">
+          <e p="Season.txt" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="ScoreboardController.cs" t="Include" />
+          <e p="SeasonGenerator.cs" t="Include" />
+          <e p="SingletonMatchType.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Scoreboard.sln" t="IncludeFlat" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
