@@ -9,6 +9,7 @@ public class SingletonMatchType
     private bool mStoppedTime;
     private int mMaxTime;
     private string mGroupURL;
+    private bool updatedDay;
 
     public int MaxTime
     {
@@ -20,6 +21,11 @@ public class SingletonMatchType
     {
         get => mStoppedTime;
         set => mStoppedTime = value;
+    }
+    public bool UpdatedDay
+    {
+        get => updatedDay;
+        set => updatedDay = value;
     }
 
     public string Match

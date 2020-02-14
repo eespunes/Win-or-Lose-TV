@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class SeasonGenerator : MonoBehaviour
 {
     public Dropdown mDropdown;
+    public Toggle mToggle;
     public int mMatches;
     public bool mStoppedTIme;
     public int mMaxTimeStopped, mMaxTimeRunned;
@@ -15,6 +16,7 @@ public class SeasonGenerator : MonoBehaviour
 
     private void Start()
     {
+        SingletonMatchType.GetInstance().UpdatedDay = mToggle.isOn;
         SingletonMatchType.GetInstance().StoppedTime = mStoppedTIme;
         SingletonMatchType.GetInstance().MaxTime = mStoppedTIme ? mMaxTimeStopped : mMaxTimeRunned;
         SingletonMatchType.GetInstance().GroupURL = mGroupURL;

@@ -16380,6 +16380,46 @@ PrefabInstance:
       propertyPath: mTableRenderer
       value: 
       objectReference: {fileID: 1542962329}
+    - target: {fileID: 5157044547455573374, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: mPlayingColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157044547455573374, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: mPlayingColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157044547455573374, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: mPlayingColor.b
+      value: 0.19215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157044547455573374, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: mPlayingColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157044547455573374, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: mNotPlayingColor.r
+      value: 0.76862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157044547455573374, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: mNotPlayingColor.g
+      value: 0.9254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157044547455573374, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: mNotPlayingColor.b
+      value: 0.043137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157044547455573374, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: mNotPlayingColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5157044547455573375, guid: deb3a08fa0d7ae34293b6810412a15f2,
         type: 3}
       propertyPath: m_LocalPosition.x
