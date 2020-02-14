@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\Erik Espuñes Juberó\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Erik Espuñes Juberó\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Scoreboard.-1280500523.00" t="ExcludeRecursive" />
-    <e p="D:\OneDrive\Projectes\Scoreboard\Scoreboard" t="IncludeRecursive">
+    <e p="C:\Users\Erik Espuñes Juberó\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Scoreboard.467283374.00" t="ExcludeRecursive" />
+    <e p="D:\OneDrive\Projectes\Scoreboard\Unity\Scoreboard" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -45,6 +45,13 @@
           <e p="Season.txt" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="Scoreboard" t="Include">
+            <e p="FileReader.cs" t="Include" />
+            <e p="Loader.cs" t="Include" />
+            <e p="ScoreboardGUI.cs" t="Include" />
+            <e p="TableGenerator.cs" t="Include" />
+            <e p="Team.cs" t="Include" />
+          </e>
           <e p="ScoreboardController.cs" t="Include" />
           <e p="SeasonGenerator.cs" t="Include" />
           <e p="SingletonMatchType.cs" t="Include" />

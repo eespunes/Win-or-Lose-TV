@@ -923,7 +923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &583066983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1425,8 +1425,6 @@ MonoBehaviour:
 
     M - Intro
 
-    N - Fin
-
 '
 --- !u!222 &1002722903
 CanvasRenderer:
@@ -1719,8 +1717,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1522560114}
   - component: {fileID: 1522560117}
-  - component: {fileID: 1522560116}
   - component: {fileID: 1522560115}
+  - component: {fileID: 1522560116}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -1811,25 +1809,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1522560113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.76862746, g: 0.9254902, b: 0.043137256, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4f95bf905e56fc646b952fe1d5f6b4bb, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 724b3312679bcc94b82656575e59a013, type: 3}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 125
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: START
 --- !u!222 &1522560117
 CanvasRenderer:
   m_ObjectHideFlags: 0

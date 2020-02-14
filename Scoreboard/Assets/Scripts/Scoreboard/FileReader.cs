@@ -68,12 +68,12 @@ public class FileReader
             }
         }
 
-        string[,] toReturn = new string[mMap.Count, mMap[team].Length];
+        string[,] toReturn = new string[mMap.Count, mMap[team].Length + 1];
         int x = 0;
         foreach (var key in mMap.Keys)
         {
-            int y = 0;
-            toReturn[x, y] = key;
+            toReturn[x, 0] = key;
+            int y = 1;
             foreach (var value in mMap[key])
             {
                 toReturn[x, y] = value;
