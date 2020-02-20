@@ -1,5 +1,8 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class MatchController
 {
@@ -16,9 +19,13 @@ public class MatchController
     private Team homeTeam, awayTeam;
     private ScoreboardGUI scoreboardGui;
 
-    public MatchController(ScoreboardGUI scoreboardGui)
+    public MatchController(ScoreboardGUI scoreboardGui, Team homeTeam, Team awayTeam)
     {
         this.scoreboardGui = scoreboardGui;
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        scoreboardGui.HomeScore.text = homeTeam.PlayingScore.ToString();
+        scoreboardGui.AwayScore.text = awayTeam.PlayingScore.ToString();
     }
 
     public void Update()
@@ -28,26 +35,33 @@ public class MatchController
         if (playing)
         {
             UpdateTime();
-            // //GOAL HOME
-            // if (Input.GetKeyDown(KeyCode.Q))
-            //     IncreaseScoreHome();
-            // if (Input.GetKeyDown(KeyCode.A))
-            //     DecreaseScoreHome();
-            // //GOAL AWAY
-            // if (Input.GetKeyDown(KeyCode.W))
-            //     IncreaseScoreAway();
-            // if (Input.GetKeyDown(KeyCode.S))
-            //     DecreaseScoreAway();
-            // //FAULT HOME
-            // if (Input.GetKeyDown(KeyCode.Z))
-            //     HomeFault();
-            // //FAULT AWAY
-            // if (Input.GetKeyDown(KeyCode.X))
-            //     AwayFault();
-            // //TIMEOUT
-            // if (Input.GetKeyDown(KeyCode.T))
-            //     StartTimeout();
+            //GOAL HOME
+            if (Input.GetKeyDown(KeyCode.Q))
+                IncreaseScoreHome();
+            if (Input.GetKeyDown(KeyCode.A))
+                DecreaseScoreHome();
+            //GOAL AWAY
+            if (Input.GetKeyDown(KeyCode.W))
+                IncreaseScoreAway();
+            if (Input.GetKeyDown(KeyCode.S))
+                DecreaseScoreAway();
+            //FAULT HOME
+            if (Input.GetKeyDown(KeyCode.Z))
+                HomeFault();
+            //FAULT AWAY
+            if (Input.GetKeyDown(KeyCode.X))
+                AwayFault();
+            //TIMEOUT
+            if (Input.GetKeyDown(KeyCode.T))
+                StartTimeout();
         }
+    }
+
+    private void StartTimeout()
+    {
+        timeout = true;
+        playing = false;
+        scoreboardGui.StartCoroutine(scoreboardGui.Timeout());
     }
 
     private void StartTime()
@@ -57,7 +71,7 @@ public class MatchController
             if (SingletonMatchType.GetInstance().StoppedTime || EndFirstHalf() || EndSecondHalf())
                 StopTime();
         }
-        else
+        else if (!timeout)
         {
             if (startHalf)
             {
@@ -74,18 +88,12 @@ public class MatchController
                     goal = false;
             }
 
-            if (timeout)
-            {
-                timeout = false;
-                playing = true;
-                StopUpperOrStartBottom();
-            }
             else
             {
                 if (time == SingletonMatchType.GetInstance().MaxTime * 60 ||
                     !SingletonMatchType.GetInstance().StoppedTime)
                 {
-                    StopUpperOrStartBottom();
+                    scoreboardGui.StartCoroutine(scoreboardGui.StopUpperOrStartBottom());
                 }
 
                 playing = true;
@@ -146,8 +154,8 @@ public class MatchController
             }
 
             scoreboardGui.Time.text = time + ":00";
-            
-            StopUpperOrStartBottom();
+
+            scoreboardGui.StartCoroutine(scoreboardGui.StopUpperOrStartBottom());
         }
         else if (time == 0)
         {
@@ -160,7 +168,7 @@ public class MatchController
                 startHalf = true;
             }
 
-            StopUpperOrStartBottom();
+            scoreboardGui.StartCoroutine(scoreboardGui.StopUpperOrStartBottom());
         }
     }
 
@@ -195,24 +203,6 @@ public class MatchController
         // }
     }
 
-    private IEnumerator StopUpperOrStartBottom()
-    {
-        InvokeRepeating(nameof(DecreaseSong), .25f, .25f);
-         if (_mMasterVideoPlayer.isPlaying && _mMasterVideoPlayer.clip.name.Contains("_upper_loop"))
-         {
-             _mAnimator.SetBool(Upper, false);
-             _mMasterVideoPlayer.isLooping = false;
-             ChangeVideo(_mUpperOutroVideoClip);
-             Invoke(nameof(StopUpper), (float) _mUpperOutroVideoClip.length);
-         }
-         else if (!(_mMasterVideoPlayer.isPlaying && _mMasterVideoPlayer.clip.name.Contains("_bottom")))
-         {
-             _mAnimator.SetTrigger(Bottom);
-             ChangeVideo(_mBottomVideoClip);
-             Invoke(nameof(StopBottom), (float) _mBottomVideoClip.length);
-         }
-    }
-
     private bool EndFirstHalf()
     {
         return playing && time / 60 >= SingletonMatchType.GetInstance().MaxTime - 1 && firstHalf;
@@ -223,5 +213,62 @@ public class MatchController
         return playing && time / 60 >= SingletonMatchType.GetInstance().MaxTime * 2 - 1 && secondHalf;
     }
 
+    private void IncreaseScoreHome()
+    {
+        scoreboardGui.StopAllCoroutines();
+        homeTeam.IncreaseScore(awayTeam);
+        scoreboardGui.HomeScore.text = homeTeam.PlayingScore.ToString();
+        // goal = true;
+        if (SingletonMatchType.GetInstance().StoppedTime)
+            StopTime();
+
+        scoreboardGui.StartCoroutine(scoreboardGui.Goal("Home Goal"));
+    }
+
+    private void DecreaseScoreHome()
+    {
+        homeTeam.DecreaseScore(awayTeam);
+        scoreboardGui.HomeScore.text = homeTeam.PlayingScore.ToString();
+    }
+
+    private void IncreaseScoreAway()
+    {
+        scoreboardGui.StopAllCoroutines();
+        awayTeam.IncreaseScore(homeTeam);
+        scoreboardGui.AwayScore.text = awayTeam.PlayingScore.ToString();
+        // goal = true;
+        if (SingletonMatchType.GetInstance().StoppedTime)
+            StopTime();
+
+        scoreboardGui.StartCoroutine(scoreboardGui.Goal("Away Goal"));
+    }
+
+    private void DecreaseScoreAway()
+    {
+        awayTeam.DecreaseScore(homeTeam);
+        scoreboardGui.AwayScore.text = awayTeam.PlayingScore.ToString();
+    }
+    
+    private void HomeFault()
+    {
+        homeTeam.IncreaseFault();
+        scoreboardGui.StartCoroutine(scoreboardGui.HomeFaults(homeTeam.PlayingFaults));
+    }
+
+
+    private void AwayFault()
+    {
+        awayTeam.IncreaseFault();
+        scoreboardGui.StartCoroutine(scoreboardGui.AwayFaults(awayTeam.PlayingFaults));
+    }
+
     public bool Playing => playing;
+
+    public bool Timeout => timeout;
+
+    public void StopTimeout()
+    {
+        timeout = false;
+        StartTime();
+    }
 }

@@ -31,17 +31,42 @@ public class ScoreboardGUI : MonoBehaviour
     private Text awayScore;
     private GameObject[] homeFaults;
     private GameObject[] awayFaults;
+    private Dictionary<string, AudioClip> audioDict;
+
+
+    private Animator animator;
+    private static readonly int Bottom = Animator.StringToHash("Bottom");
+    private static readonly int Upper = Animator.StringToHash("Upper");
+    private static readonly int HalfTime = Animator.StringToHash("Half Time");
+    private static readonly int EndTime = Animator.StringToHash("End Match");
+    private static readonly int ToUpperIntro = Animator.StringToHash("To Upper Intro");
+    private static readonly int ToIdle = Animator.StringToHash("To Idle");
 
     private void Awake()
     {
+        animator = transform.GetChild(3).GetComponent<Animator>();
         videosDict = Loader.LoadVideos();
         tableVideosDict = Loader.LoadTableVideos();
+        audioDict = Loader.LoadAudios();
         InitTable();
         FindVideoPlayer();
         FindTexts();
         FindTable();
-        matchController = new MatchController(this);
+        Team home = null, away = null;
+        foreach (var team in tableGenerator.Table)
+        {
+            if (team.IsPlaying)
+                if (team.Name.Replace("\n", "")
+                    .Equals(FileReader.LoadFileToDictionary("season")[SingletonMatchType.GetInstance().Match][0]))
+                    home = team;
+                else
+                    away = team;
+        }
+
+        matchController = new MatchController(this, home, away);
         ChangeVideo(videosDict["Default"]);
+
+        timeoutVideoPlayer.clip = videosDict["Timeout"];
     }
 
     private void InitTable()
@@ -58,8 +83,9 @@ public class ScoreboardGUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) && !matchController.Playing)
             StartCoroutine(Intro());
+        matchController.Update();
     }
 
     IEnumerator Intro()
@@ -92,6 +118,56 @@ public class ScoreboardGUI : MonoBehaviour
     {
         masterVideoPlayer = transform.GetChild(0).GetComponent<VideoPlayer>();
         timeoutVideoPlayer = transform.GetChild(1).GetComponent<VideoPlayer>();
+    }
+
+    public IEnumerator StopUpperOrStartBottom()
+    {
+        // StartCoroutine(DecreaseSong);
+        if (masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_upper_loop"))
+        {
+            animator.SetBool(Upper, false);
+            masterVideoPlayer.isLooping = false;
+            ChangeVideo(videosDict["Upper Outro"]);
+            yield return new WaitForSeconds((float) videosDict["Upper Outro"].length);
+            ChangeVideo(videosDict["Default"]);
+
+            animator.SetTrigger(Bottom);
+            ChangeVideo(videosDict["Bottom"]);
+            yield return new WaitForSeconds((float) videosDict["Bottom"].length);
+
+            ChangeVideo(videosDict["Default"]);
+        }
+        else if (!(masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_bottom")))
+        {
+            animator.SetTrigger(Bottom);
+            ChangeVideo(videosDict["Bottom"]);
+            yield return new WaitForSeconds((float) videosDict["Bottom"].length);
+
+            ChangeVideo(videosDict["Default"]);
+            if (matchController.Playing || matchController.Timeout)
+            {
+                animator.SetBool(Upper, true);
+                ChangeVideo(videosDict["Upper Intro"]);
+                yield return new WaitForSeconds((float) videosDict["Upper Intro"].length);
+                masterVideoPlayer.isLooping = true;
+                ChangeVideo(videosDict["Upper Loop"]);
+            }
+
+            else
+            {
+                // StopAllCoroutines();
+                // tableRenderer.gameObject.SetActive(false);
+                // transform.GetChild(2).gameObject.SetActive(false);
+                // ChangeVideo(videosDict["Default"]);
+                // // InvokeRepeating(nameof(IncreaseSong), .25f, .25f);
+                // // audioSource.Play();
+                //
+                // tableGenerator.UpdateTable();
+                // tableGenerator.ToGUI();
+                // // firstHalf ? yield return new WaitForSeconds((float) videosDict["Bottom"].length): yield return
+                // //     new WaitForSeconds((float) videosDict["Bottom"].length);
+            }
+        }
     }
 
     private void FindTexts()
@@ -193,4 +269,109 @@ public class ScoreboardGUI : MonoBehaviour
     public Text[] Played => played;
 
     public Text Time => time;
+
+    public Text HomeScore => homeScore;
+
+    public Text AwayScore => awayScore;
+
+    public IEnumerator Goal(string video)
+    {
+        if (masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_upper_loop"))
+        {
+            animator.SetBool(Upper, false);
+            masterVideoPlayer.isLooping = false;
+            ChangeVideo(videosDict["Upper Outro"]);
+            yield return new WaitForSeconds((float) videosDict["Upper Outro"].length);
+        }
+        else if (masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_bottom"))
+        {
+            yield return new WaitForSeconds((float) (videosDict["Bottom"].length - masterVideoPlayer.time));
+        }
+
+        ChangeVideo(videosDict["Default"]);
+
+        animator.SetTrigger(ToIdle);
+        ChangeVideo(videosDict[video]);
+        yield return new WaitForSeconds((float) videosDict[video].length);
+
+        ChangeVideo(videosDict["Default"]);
+
+        StartCoroutine(StopUpperOrStartBottom());
+    }
+
+    public IEnumerator Timeout()
+    {
+        if (masterVideoPlayer.isPlaying && !masterVideoPlayer.clip.name.Contains("_upper_loop"))
+        {
+            yield return new WaitForSeconds((float) (masterVideoPlayer.clip.length - masterVideoPlayer.time));
+            ChangeVideo(videosDict["Default"]);
+            animator.SetBool(Upper, true);
+            ChangeVideo(videosDict["Upper Intro"]);
+            yield return new WaitForSeconds((float) videosDict["Upper Intro"].length);
+            masterVideoPlayer.isLooping = true;
+            ChangeVideo(videosDict["Upper Loop"]);
+        }
+
+        timeoutVideoPlayer.gameObject.SetActive(true);
+        yield return new WaitForSeconds((float) videosDict["Timeout"].length);
+        matchController.StopTimeout();
+    }
+
+    public IEnumerator HomeFaults(int faults)
+    {
+        if (faults == 1)
+            homeFaults[faults - 1].SetActive(true);
+        else if (faults <= 5)
+        {
+            homeFaults[faults - 1].SetActive(true);
+            homeFaults[faults - 2].SetActive(false);
+        }
+        else
+            StopCoroutine(HomeFaults(faults));
+
+
+        if (!(masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_bottom")))
+        {
+            if (masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_upper_loop"))
+                masterVideoPlayer.frame = 0;
+            else
+            {
+                masterVideoPlayer.isLooping = false;
+                animator.SetTrigger(ToUpperIntro);
+                ChangeVideo(videosDict["Upper Intro"]);
+                yield return new WaitForSeconds((float) videosDict["Upper Intro"].length);
+                masterVideoPlayer.isLooping = true;
+                ChangeVideo(videosDict["Upper Loop"]);
+            }
+        }
+    }
+
+    public IEnumerator AwayFaults(int faults)
+    {
+        if (faults == 1)
+            awayFaults[faults - 1].SetActive(true);
+        else if (faults <= 5)
+        {
+            awayFaults[faults - 1].SetActive(true);
+            awayFaults[faults - 2].SetActive(false);
+        }
+        else
+            StopCoroutine(HomeFaults(faults));
+
+
+        if (!(masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_bottom")))
+        {
+            if (masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_upper_loop"))
+                masterVideoPlayer.frame = 0;
+            else
+            {
+                masterVideoPlayer.isLooping = false;
+                animator.SetTrigger(ToUpperIntro);
+                ChangeVideo(videosDict["Upper Intro"]);
+                yield return new WaitForSeconds((float) videosDict["Upper Intro"].length);
+                masterVideoPlayer.isLooping = true;
+                ChangeVideo(videosDict["Upper Loop"]);
+            }
+        }
+    }
 }

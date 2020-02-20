@@ -1,95 +1,95 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Xml;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Video;
-using System.Text.RegularExpressions;
-
-public class ScoreboardController : MonoBehaviour
-{
-//     private VideoPlayer _mMasterVideoPlayer, _mTimeoutVideoPlayer;
+﻿// using System;
+// using System.Collections.Generic;
+// using System.Globalization;
+// using System.IO;
+// using System.Linq;
+// using System.Net;
+// using System.Xml;
+// using UnityEngine;
+// using UnityEngine.UI;
+// using UnityEngine.Video;
+// using System.Text.RegularExpressions;
 //
-//     private AudioSource _mAudioSource;
-//
-//     private Text _mTimeText, _mHomeScoreText, _mAwayScoreText;
-//
-//     private float _mTime;
-//     private bool _mTimeout, _mStoppedTime;
-//     private int _mMaxTime;
-//     private int _mHomeScore, _mAwayScore;
-//     private int _mHomeFaults, _mAwayFaults;
-//     private bool _mPlaying;
-//
-//     private GameObject[] _mHomeFaultsUI, _mAwayFaultsUI;
-//
-//     private AudioClip _mIntroAudioClip, _mLoopAudioClip, _mGoalAudioClip, _mOutroAudioClip;
-//
-//     private VideoClip _mIntroVideoClip,
-//         _mDefaultVideoClip,
-//         _mOutroVideoClip,
-//         _mBottomVideoClip,
-//         _mUpperIntroVideoClip,
-//         _mUpperLoopVideoClip,
-//         _mUpperOutroVideoClip,
-//         _mPreMatchVideoClip,
-//         _mEndMatchVideoClip,
-//         _mHalftimeIntroVideoClip,
-//         _mHalftimeLoopVideoClip,
-//         _mHalfTimeOutroVideoClip,
-//         _mHomeGoalVideoClip,
-//         _mAwayGoalVideoClip,
-//         _mConnectedVideoClip,
-//         _mDisconnectedVideoClip,
-//         _mTableVideoClip;
-//
-//     private VideoClip[] mRatxa, mNotPlaying, mPlaying;
-//
-//     private bool _mStartHalf;
-//     private bool _mFirstHalf;
-//     private bool _mSecondHalf;
-//     private bool _mGoal;
-//
-//     private Animator _mAnimator;
-//     private static readonly int Bottom = Animator.StringToHash("Bottom");
-//     private static readonly int Upper = Animator.StringToHash("Upper");
-//     private static readonly int HalfTime = Animator.StringToHash("Half Time");
-//     private static readonly int EndTime = Animator.StringToHash("End Match");
-//     private static readonly int ToUpperIntro = Animator.StringToHash("To Upper Intro");
-//     private static readonly int ToIdle = Animator.StringToHash("To Idle");
-//
-//     private Dictionary<string, string[]> mMap;
-//     private Text[] mPunts, mJugats, mGuanyats, mEmpatats, mPerduts;
-//     private VideoPlayer[] mEquips, mRatxa1, mRatxa2, mRatxa3, mRatxa4;
-//     public Transform mTableRenderer;
-//
-//     public Color mNotPlayingColor, mPlayingColor;
-//     private Dictionary<string, string[]> mFileMap;
-//     private bool halfTablePlayed;
-//
-     private void Awake()
-     {
-         // _mAudioSource = GetComponent<AudioSource>();
-         // _mAnimator = transform.GetChild(3).GetComponent<Animator>();
-         // _mStoppedTime = SingletonMatchType.GetInstance().StoppedTime;
-         // _mMaxTime = SingletonMatchType.GetInstance().MaxTime;
-         // FindVideoPlayer();
-         // FindTexts();
-         // FindTable();
-         // LoadAudio();
-         // LoadVideos();
-         //
-         // _mMasterVideoPlayer.clip = _mDefaultVideoClip;
-         
-         foreach (var VARIABLE in new TableGenerator(new ScoreboardGUI()).Table.Sort((x,y)=>x.CompareTo(y)))
-         {
-             print(VARIABLE);
-         }
-     }
+// public class ScoreboardController : MonoBehaviour
+// {
+// //     private VideoPlayer _mMasterVideoPlayer, _mTimeoutVideoPlayer;
+// //
+// //     private AudioSource _mAudioSource;
+// //
+// //     private Text _mTimeText, _mHomeScoreText, _mAwayScoreText;
+// //
+// //     private float _mTime;
+// //     private bool _mTimeout, _mStoppedTime;
+// //     private int _mMaxTime;
+// //     private int _mHomeScore, _mAwayScore;
+// //     private int _mHomeFaults, _mAwayFaults;
+// //     private bool _mPlaying;
+// //
+// //     private GameObject[] _mHomeFaultsUI, _mAwayFaultsUI;
+// //
+// //     private AudioClip _mIntroAudioClip, _mLoopAudioClip, _mGoalAudioClip, _mOutroAudioClip;
+// //
+// //     private VideoClip _mIntroVideoClip,
+// //         _mDefaultVideoClip,
+// //         _mOutroVideoClip,
+// //         _mBottomVideoClip,
+// //         _mUpperIntroVideoClip,
+// //         _mUpperLoopVideoClip,
+// //         _mUpperOutroVideoClip,
+// //         _mPreMatchVideoClip,
+// //         _mEndMatchVideoClip,
+// //         _mHalftimeIntroVideoClip,
+// //         _mHalftimeLoopVideoClip,
+// //         _mHalfTimeOutroVideoClip,
+// //         _mHomeGoalVideoClip,
+// //         _mAwayGoalVideoClip,
+// //         _mConnectedVideoClip,
+// //         _mDisconnectedVideoClip,
+// //         _mTableVideoClip;
+// //
+// //     private VideoClip[] mRatxa, mNotPlaying, mPlaying;
+// //
+// //     private bool _mStartHalf;
+// //     private bool _mFirstHalf;
+// //     private bool _mSecondHalf;
+// //     private bool _mGoal;
+// //
+// //     private Animator _mAnimator;
+// //     private static readonly int Bottom = Animator.StringToHash("Bottom");
+// //     private static readonly int Upper = Animator.StringToHash("Upper");
+// //     private static readonly int HalfTime = Animator.StringToHash("Half Time");
+// //     private static readonly int EndTime = Animator.StringToHash("End Match");
+// //     private static readonly int ToUpperIntro = Animator.StringToHash("To Upper Intro");
+// //     private static readonly int ToIdle = Animator.StringToHash("To Idle");
+// //
+// //     private Dictionary<string, string[]> mMap;
+// //     private Text[] mPunts, mJugats, mGuanyats, mEmpatats, mPerduts;
+// //     private VideoPlayer[] mEquips, mRatxa1, mRatxa2, mRatxa3, mRatxa4;
+// //     public Transform mTableRenderer;
+// //
+// //     public Color mNotPlayingColor, mPlayingColor;
+// //     private Dictionary<string, string[]> mFileMap;
+// //     private bool halfTablePlayed;
+// //
+//      private void Awake()
+//      {
+//          // _mAudioSource = GetComponent<AudioSource>();
+//          // _mAnimator = transform.GetChild(3).GetComponent<Animator>();
+//          // _mStoppedTime = SingletonMatchType.GetInstance().StoppedTime;
+//          // _mMaxTime = SingletonMatchType.GetInstance().MaxTime;
+//          // FindVideoPlayer();
+//          // FindTexts();
+//          // FindTable();
+//          // LoadAudio();
+//          // LoadVideos();
+//          //
+//          // _mMasterVideoPlayer.clip = _mDefaultVideoClip;
+//          
+//          foreach (var VARIABLE in new TableGenerator(new ScoreboardGUI()).Table.Sort((x,y)=>x.CompareTo(y)))
+//          {
+//              print(VARIABLE);
+//          }
+//      }
 //
 //     private bool PlayingTeam(string team)
 //     {
@@ -481,605 +481,6 @@ public class ScoreboardController : MonoBehaviour
 //         }
 //     }
 //
-//     private void CalculateActualTable()
-//     {
-//         // LoadClassification();
-//         String[,] lTable = new string[16, 9];
-//
-//         //Crear Nueva Clasificación
-//         int lCounter = 0;
-//         int lHome = 0, lAway = 0;
-//         foreach (var team in mMap.Keys)
-//         {
-//             int jCounter = 0;
-//             lTable[lCounter, jCounter] = team;
-//             jCounter++;
-//             foreach (var value in mMap[team])
-//             {
-//                 int lValue = 0;
-//                 Int32.TryParse(value, out lValue);
-//                 if (PlayingTeam(team))
-//                 {
-//                     if (team.Replace("\n", "").Equals(mFileMap[SingletonMatchType.GetInstance().Match][0]))
-//                     {
-//                         lHome = lCounter;
-//                         if (jCounter == 1) //Puntos
-//                         {
-//                             if (_mHomeScore > _mAwayScore)
-//                                 lTable[lCounter, jCounter] = (lValue + 3).ToString();
-//                             else if (_mHomeScore == _mAwayScore)
-//                                 lTable[lCounter, jCounter] = (lValue + 1).ToString();
-//                             else
-//                                 lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 2) //Jornadas
-//                         {
-//                             lTable[lCounter, jCounter] = (lValue + 1).ToString();
-//                         }
-//                         else if (jCounter == 3) //Victorias
-//                         {
-//                             if (_mHomeScore > _mAwayScore)
-//                                 lTable[lCounter, jCounter] = (lValue + 1).ToString();
-//                             else
-//                                 lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 4) //Empates
-//                         {
-//                             if (_mHomeScore == _mAwayScore)
-//                                 lTable[lCounter, jCounter] = (lValue + 1).ToString();
-//                             else
-//                                 lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 5) //Derrotas
-//                         {
-//                             if (_mHomeScore < _mAwayScore)
-//                                 lTable[lCounter, jCounter] = (lValue + 1).ToString();
-//                             else
-//                                 lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 6) //Goles a Favor
-//                         {
-//                             lTable[lCounter, jCounter] = (lValue + _mHomeScore).ToString();
-//                         }
-//                         else if (jCounter == 7) //Goles en Contra
-//                         {
-//                             lTable[lCounter, jCounter] = (lValue + _mAwayScore).ToString();
-//                         }
-//                         else if (jCounter == 8) //Racha
-//                         {
-//                             string s2 = Regex.Replace(value, @"[^A-Z]+", String.Empty);
-//                             string s3 = s2.Substring(s2.Length - 1);
-//                             int lPunts, lVictories, lEmpats, lDerrotes;
-//                             Int32.TryParse(lTable[lCounter, 1], out lPunts);
-//                             Int32.TryParse(lTable[lCounter, 3], out lVictories);
-//                             Int32.TryParse(lTable[lCounter, 4], out lEmpats);
-//                             Int32.TryParse(lTable[lCounter, 5], out lDerrotes);
-//                             if (s3.Equals("G"))
-//                             {
-//                                 lTable[lCounter, 1] = (lPunts - 3).ToString();
-//                                 lTable[lCounter, 3] = (lVictories - 1).ToString();
-//                             }
-//                             else if (s3.Equals("P"))
-//                             {
-//                                 lTable[lCounter, 5] = (lDerrotes - 1).ToString();
-//                             }
-//                             else if (s3.Equals("E"))
-//                             {
-//                                 lTable[lCounter, 1] = (lPunts - 1).ToString();
-//                                 lTable[lCounter, 4] = (lEmpats - 1).ToString();
-//                             }
-//
-//                             if (_mHomeScore > _mAwayScore)
-//                                 s2 = s2.Substring(0, s2.Length - 1) + "G";
-//                             else if (_mHomeScore == _mAwayScore)
-//                                 s2 = s2.Substring(0, s2.Length - 1) + "E";
-//                             else
-//                                 s2 = s2.Substring(0, s2.Length - 1) + "P";
-//                             lTable[lCounter, jCounter] = s2;
-//                         }
-//                     }
-//                     else
-//                     {
-//                         lAway = lCounter;
-//                         if (jCounter == 1) //Puntos
-//                         {
-//                             if (_mHomeScore < _mAwayScore)
-//                                 lTable[lCounter, jCounter] = (lValue + 3).ToString();
-//                             else if (_mHomeScore == _mAwayScore)
-//                                 lTable[lCounter, jCounter] = (lValue + 1).ToString();
-//                             else
-//                                 lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 2) //Jornadas
-//                         {
-//                             lTable[lCounter, jCounter] = (lValue + 1).ToString();
-//                         }
-//                         else if (jCounter == 3) //Victorias
-//                         {
-//                             if (_mHomeScore < _mAwayScore)
-//                                 lTable[lCounter, jCounter] = (lValue + 1).ToString();
-//                             else
-//                                 lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 4) //Empates
-//                         {
-//                             if (_mHomeScore == _mAwayScore)
-//                                 lTable[lCounter, jCounter] = (lValue + 1).ToString();
-//                             else
-//                                 lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 5) //Derrotas
-//                         {
-//                             if (_mHomeScore > _mAwayScore)
-//                                 lTable[lCounter, jCounter] = (lValue + 1).ToString();
-//                             else
-//                                 lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 6) //Goles a Favor
-//                         {
-//                             lTable[lCounter, jCounter] = (lValue + _mAwayScore).ToString();
-//                         }
-//                         else if (jCounter == 7) //Goles en Contra
-//                         {
-//                             lTable[lCounter, jCounter] = (lValue + _mHomeScore).ToString();
-//                         }
-//                         else if (jCounter == 8) //Racha
-//                         {
-//                             string s2 = Regex.Replace(value, @"[^A-Z]+", String.Empty);
-//                             string s3 = s2.Substring(s2.Length - 1);
-//                             int lPunts, lVictories, lEmpats, lDerrotes;
-//                             Int32.TryParse(lTable[lCounter, 1], out lPunts);
-//                             Int32.TryParse(lTable[lCounter, 3], out lVictories);
-//                             Int32.TryParse(lTable[lCounter, 4], out lEmpats);
-//                             Int32.TryParse(lTable[lCounter, 5], out lDerrotes);
-//                             if (s3.Equals("G"))
-//                             {
-//                                 lTable[lCounter, 1] = (lPunts - 3).ToString();
-//                                 lTable[lCounter, 3] = (lVictories - 1).ToString();
-//                             }
-//                             else if (s3.Equals("P"))
-//                             {
-//                                 lTable[lCounter, 5] = (lDerrotes - 1).ToString();
-//                             }
-//                             else if (s3.Equals("E"))
-//                             {
-//                                 lTable[lCounter, 1] = (lPunts - 1).ToString();
-//                                 lTable[lCounter, 4] = (lEmpats - 1).ToString();
-//                             }
-//
-//                             if (_mHomeScore > _mAwayScore)
-//                                 s2 = s2.Substring(0, s2.Length - 1) + "P";
-//                             else if (_mHomeScore == _mAwayScore)
-//                                 s2 = s2.Substring(0, s2.Length - 1) + "E";
-//                             else
-//                                 s2 = s2.Substring(0, s2.Length - 1) + "G";
-//                             lTable[lCounter, jCounter] = s2;
-//                         }
-//                     }
-//                 }
-//                 else
-//                 {
-//                     if (jCounter == 8)
-//                         lTable[lCounter, jCounter] = value;
-//                     else
-//                         lTable[lCounter, jCounter] = lValue.ToString();
-//                 }
-//
-//                 jCounter++;
-//             }
-//
-//             lCounter++;
-//         }
-//
-//         String[] t = new string[9];
-//
-//         Debug.LogWarning(lHome);
-//         Debug.LogWarning(lAway);
-//
-//         //Ordenar la clasificación
-//         for (int i = 0; i < 16; i++)
-//         {
-//             if (i == lHome)
-//                 for (int j = lHome - 1; j >= 0; j--)
-//                 {
-//                     var c1 = 0;
-//                     var c2 = 0;
-//                     var f1 = 0;
-//                     var f2 = 0;
-//                     var p1 = 0;
-//                     var p2 = 0;
-//
-//                     Int32.TryParse(lTable[lHome, 7], out c1);
-//                     Int32.TryParse(lTable[j, 7], out c2);
-//                     Int32.TryParse(lTable[lHome, 6], out f1);
-//                     Int32.TryParse(lTable[j, 6], out f2);
-//                     Int32.TryParse(lTable[lHome, 1], out p1);
-//                     Int32.TryParse(lTable[j, 1], out p2);
-//                     // print(lTable[lHome, 0] + ", "+p1+ ", "+f1+ ", "+c1+"== " + lTable[j, 0]+ ", "+p2+ ", "+f2+ ", "+c2);
-//                     if ((p1 > p2) ||
-//                         (p1 == p2 && f1 - c1 > f2 - c2) ||
-//                         (f1 - c1 == f2 - c2 && f1 > f2) ||
-//                         (f1 == f2 && c1 > c2))
-//                     {
-//                         // print("\tENTERS");
-//                         for (int k = 0; k < 9; k++)
-//                             t[k] = lTable[lHome, k];
-//                         for (int k = 0; k < 9; k++)
-//                             lTable[lHome, k] = lTable[j, k];
-//                         for (int k = 0; k < 9; k++)
-//                             lTable[j, k] = t[k];
-//                         lHome = j;
-//                     }
-//                 }
-//             else if (i == lAway)
-//             {
-//                 for (int j = lAway - 1; j >= 0; j--)
-//                 {
-//                     var c1 = 0;
-//                     var c2 = 0;
-//                     var f1 = 0;
-//                     var f2 = 0;
-//                     var p1 = 0;
-//                     var p2 = 0;
-//
-//                     Int32.TryParse(lTable[lAway, 7], out c1);
-//                     Int32.TryParse(lTable[j, 7], out c2);
-//                     Int32.TryParse(lTable[lAway, 6], out f1);
-//                     Int32.TryParse(lTable[j, 6], out f2);
-//                     Int32.TryParse(lTable[lAway, 1], out p1);
-//                     Int32.TryParse(lTable[j, 1], out p2);
-//                     // print(lTable[lAway, 0] + ", "+p1+ ", "+f1+ ", "+c1+"== " + lTable[j, 0]+ ", "+p2+ ", "+f2+ ", "+c2);
-//
-//                     if ((p1 > p2) ||
-//                         (p1 == p2 && f1 - c1 > f2 - c2) ||
-//                         (f1 - c1 == f2 - c2 && f1 > f2) ||
-//                         (f1 == f2 && c1 > c2))
-//                     {
-//                         // print("\tENTERS");
-//                         for (int k = 0; k < 9; k++)
-//                             t[k] = lTable[lAway, k];
-//                         for (int k = 0; k < 9; k++)
-//                             lTable[lAway, k] = lTable[j, k];
-//                         for (int k = 0; k < 9; k++)
-//                             lTable[j, k] = t[k];
-//                         lAway = j;
-//                     }
-//                 }
-//             }
-//         }
-//
-//         //Pasarlo a Dictionary   
-//         mMap = new Dictionary<string, string[]>();
-//         for (int i = 0; i < 16; i++)
-//         {
-//             mMap.Add(lTable[i, 0],
-//                 new[]
-//                 {
-//                     lTable[i, 1], lTable[i, 2], lTable[i, 3], lTable[i, 4], lTable[i, 5], lTable[i, 6], lTable[i, 7],
-//                     lTable[i, 8]
-//                 });
-//         }
-//         //
-//         // FillClassification();
-//     }
-//
-//     private void CalculateTableBeforePlaying()
-//     {
-//         String[,] lTable = new string[16, 9];
-//
-//         //Crear Nueva Clasificación
-//         int lCounter = 0;
-//         int lHome = 0, lAway = 0;
-//         foreach (var team in mMap.Keys)
-//         {
-//             int jCounter = 0;
-//             lTable[lCounter, jCounter] = team;
-//             jCounter++;
-//             foreach (var value in mMap[team])
-//             {
-//                 int lValue = 0;
-//                 Int32.TryParse(value, out lValue);
-//                 if (PlayingTeam(team))
-//                 {
-//                     if (team.Replace("\n", "").Equals(mFileMap[SingletonMatchType.GetInstance().Match][0]))
-//                     {
-//                         lHome = lCounter;
-//                         if (jCounter == 1) //Puntos
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 2) //Jornadas
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 3) //Victorias
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 4) //Empates
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 5) //Derrotas
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 6) //Goles a Favor
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 7) //Goles en Contra
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 8) //Racha
-//                         {
-//                             if (SingletonMatchType.GetInstance().UpdatedDay)
-//                             {
-//                                 string s2 = Regex.Replace(value, @"[^A-Z]+", String.Empty);
-//                                 string s3 = s2.Substring(s2.Length - 2);
-//                                 int lPunts, lVictories, lEmpats, lDerrotes, lJornades;
-//                                 Int32.TryParse(lTable[lCounter, 1], out lPunts);
-//                                 Int32.TryParse(lTable[lCounter, 2], out lJornades);
-//                                 Int32.TryParse(lTable[lCounter, 3], out lVictories);
-//                                 Int32.TryParse(lTable[lCounter, 4], out lEmpats);
-//                                 Int32.TryParse(lTable[lCounter, 5], out lDerrotes);
-//
-//                                 if (s3[0] == 'G')
-//                                 {
-//                                     lTable[lCounter, 1] = (lPunts - 3).ToString();
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 3] = (lVictories - 1).ToString();
-//                                 }
-//                                 else if (s3[0] == 'P')
-//                                 {
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 5] = (lDerrotes - 1).ToString();
-//                                 }
-//                                 else if (s3[0] == 'E')
-//                                 {
-//                                     lTable[lCounter, 1] = (lPunts - 1).ToString();
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 4] = (lEmpats - 1).ToString();
-//                                 }
-//
-//                                 s2 = s2.Substring(0, s2.Length - 2) + "NN";
-//                                 lTable[lCounter, jCounter] = s2;
-//                             }
-//                             else
-//                             {
-//                                 string s2 = Regex.Replace(value, @"[^A-Z]+", String.Empty);
-//                                 string s3 = s2.Substring(s2.Length - 1);
-//                                 int lPunts, lVictories, lEmpats, lDerrotes, lJornades;
-//                                 Int32.TryParse(lTable[lCounter, 1], out lPunts);
-//                                 Int32.TryParse(lTable[lCounter, 2], out lJornades);
-//                                 Int32.TryParse(lTable[lCounter, 3], out lVictories);
-//                                 Int32.TryParse(lTable[lCounter, 4], out lEmpats);
-//                                 Int32.TryParse(lTable[lCounter, 5], out lDerrotes);
-//
-//                                 if (s3.Equals("G"))
-//                                 {
-//                                     lTable[lCounter, 1] = (lPunts - 3).ToString();
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 3] = (lVictories - 1).ToString();
-//                                 }
-//                                 else if (s3.Equals("P"))
-//                                 {
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 5] = (lDerrotes - 1).ToString();
-//                                 }
-//                                 else if (s3.Equals("E"))
-//                                 {
-//                                     lTable[lCounter, 1] = (lPunts - 1).ToString();
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 4] = (lEmpats - 1).ToString();
-//                                 }
-//
-//                                 s2 = s2.Substring(0, s2.Length - 1) + "N";
-//                                 lTable[lCounter, jCounter] = s2;
-//                             }
-//                         }
-//                     }
-//                     else
-//                     {
-//                         lAway = lCounter;
-//                         if (jCounter == 1) //Puntos
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 2) //Jornadas
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 3) //Victorias
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 4) //Empates
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 5) //Derrotas
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 6) //Goles a Favor
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 7) //Goles en Contra
-//                         {
-//                             lTable[lCounter, jCounter] = lValue.ToString();
-//                         }
-//                         else if (jCounter == 8) //Racha
-//                         {
-//                             if (SingletonMatchType.GetInstance().UpdatedDay)
-//                             {
-//                                 string s2 = Regex.Replace(value, @"[^A-Z]+", String.Empty);
-//                                 string s3 = s2.Substring(s2.Length - 2);
-//                                 int lPunts, lVictories, lEmpats, lDerrotes, lJornades;
-//                                 Int32.TryParse(lTable[lCounter, 1], out lPunts);
-//                                 Int32.TryParse(lTable[lCounter, 2], out lJornades);
-//                                 Int32.TryParse(lTable[lCounter, 3], out lVictories);
-//                                 Int32.TryParse(lTable[lCounter, 4], out lEmpats);
-//                                 Int32.TryParse(lTable[lCounter, 5], out lDerrotes);
-//
-//                                 if (s3[0] == 'G')
-//                                 {
-//                                     lTable[lCounter, 1] = (lPunts - 3).ToString();
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 3] = (lVictories - 1).ToString();
-//                                 }
-//                                 else if (s3[0] == 'P')
-//                                 {
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 5] = (lDerrotes - 1).ToString();
-//                                 }
-//                                 else if (s3[0] == 'E')
-//                                 {
-//                                     lTable[lCounter, 1] = (lPunts - 1).ToString();
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 4] = (lEmpats - 1).ToString();
-//                                 }
-//
-//                                 s2 = s2.Substring(0, s2.Length - 2) + "NN";
-//                                 lTable[lCounter, jCounter] = s2;
-//                             }
-//                             else
-//                             {
-//                                 string s2 = Regex.Replace(value, @"[^A-Z]+", String.Empty);
-//                                 string s3 = s2.Substring(s2.Length - 1);
-//                                 int lPunts, lVictories, lEmpats, lDerrotes, lJornades;
-//                                 Int32.TryParse(lTable[lCounter, 1], out lPunts);
-//                                 Int32.TryParse(lTable[lCounter, 2], out lJornades);
-//                                 Int32.TryParse(lTable[lCounter, 3], out lVictories);
-//                                 Int32.TryParse(lTable[lCounter, 4], out lEmpats);
-//                                 Int32.TryParse(lTable[lCounter, 5], out lDerrotes);
-//
-//                                 if (s3.Equals("G"))
-//                                 {
-//                                     lTable[lCounter, 1] = (lPunts - 3).ToString();
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 3] = (lVictories - 1).ToString();
-//                                 }
-//                                 else if (s3.Equals("P"))
-//                                 {
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 5] = (lDerrotes - 1).ToString();
-//                                 }
-//                                 else if (s3.Equals("E"))
-//                                 {
-//                                     lTable[lCounter, 1] = (lPunts - 1).ToString();
-//                                     lTable[lCounter, 2] = (lJornades - 1).ToString();
-//                                     lTable[lCounter, 4] = (lEmpats - 1).ToString();
-//                                 }
-//
-//                                 s2 = s2.Substring(0, s2.Length - 1) + "N";
-//                                 lTable[lCounter, jCounter] = s2;
-//                             }
-//                         }
-//                     }
-//                 }
-//                 else
-//                 {
-//                     if (jCounter == 8)
-//                         lTable[lCounter, jCounter] = value;
-//                     else
-//                         lTable[lCounter, jCounter] = lValue.ToString();
-//                 }
-//
-//                 jCounter++;
-//             }
-//
-//             lCounter++;
-//         }
-//
-//         String[] t = new string[9];
-//
-//         //Ordenar la clasificación
-//         for (int i = 0; i < 16; i++)
-//         {
-//             if (i == lHome)
-//                 for (int j = lHome + 1; j < 16; j++)
-//                 {
-//                     var c1 = 0;
-//                     var c2 = 0;
-//                     var f1 = 0;
-//                     var f2 = 0;
-//                     var p1 = 0;
-//                     var p2 = 0;
-//
-//                     Int32.TryParse(lTable[lHome, 7], out c1);
-//                     Int32.TryParse(lTable[j, 7], out c2);
-//                     Int32.TryParse(lTable[lHome, 6], out f1);
-//                     Int32.TryParse(lTable[j, 6], out f2);
-//                     Int32.TryParse(lTable[lHome, 1], out p1);
-//                     Int32.TryParse(lTable[j, 1], out p2);
-//
-//                     if ((p1 < p2) ||
-//                         (p1 == p2 && f1 - c1 < f2 - c2) ||
-//                         (f1 - c1 == f2 - c2 && f1 < f2) ||
-//                         (f1 == f2 && c1 < c2))
-//                     {
-//                         for (int k = 0; k < 9; k++)
-//                             t[k] = lTable[lHome, k];
-//                         for (int k = 0; k < 9; k++)
-//                             lTable[lHome, k] = lTable[j, k];
-//                         for (int k = 0; k < 9; k++)
-//                             lTable[j, k] = t[k];
-//                         lHome = j;
-//                     }
-//                 }
-//             else if (i == lAway)
-//             {
-//                 for (int j = lAway + 1; j < 16; j++)
-//                 {
-//                     var c1 = 0;
-//                     var c2 = 0;
-//                     var f1 = 0;
-//                     var f2 = 0;
-//                     var p1 = 0;
-//                     var p2 = 0;
-//
-//                     Int32.TryParse(lTable[lAway, 7], out c1);
-//                     Int32.TryParse(lTable[j, 7], out c2);
-//                     Int32.TryParse(lTable[lAway, 6], out f1);
-//                     Int32.TryParse(lTable[j, 6], out f2);
-//                     Int32.TryParse(lTable[lAway, 1], out p1);
-//                     Int32.TryParse(lTable[j, 1], out p2);
-//
-//                     if ((p1 < p2) ||
-//                         (p1 == p2 && f1 - c1 < f2 - c2) ||
-//                         (f1 - c1 == f2 - c2 && f1 < f2) ||
-//                         (f1 == f2 && c1 < c2))
-//                     {
-//                         for (int k = 0; k < 9; k++)
-//                             t[k] = lTable[lAway, k];
-//                         for (int k = 0; k < 9; k++)
-//                             lTable[lAway, k] = lTable[j, k];
-//                         for (int k = 0; k < 9; k++)
-//                             lTable[j, k] = t[k];
-//                         lAway = j;
-//                     }
-//                 }
-//             }
-//         }
-//
-//         //Pasarlo a Dictionary   
-//         mMap = new Dictionary<string, string[]>();
-//         for (int i = 0; i < 16; i++)
-//         {
-//             mMap.Add(lTable[i, 0],
-//                 new[]
-//                 {
-//                     lTable[i, 1], lTable[i, 2], lTable[i, 3], lTable[i, 4], lTable[i, 5], lTable[i, 6], lTable[i, 7],
-//                     lTable[i, 8]
-//                 });
-//         }
-//
-//         // FillClassification();
-//     }
-//
 //     private void StartUpperLoop()
 //     {
 //         _mMasterVideoPlayer.isLooping = true;
@@ -1457,7 +858,7 @@ public class ScoreboardController : MonoBehaviour
 //
 //         Debug.Log("All Videos Loaded");
 //     }
-
+//
 //     private void FindVideoPlayer()
 //     {
 //         _mMasterVideoPlayer = transform.GetChild(0).GetComponent<VideoPlayer>();
@@ -1550,4 +951,4 @@ public class ScoreboardController : MonoBehaviour
 //             lCounter++;
 //         }
 //     }
-}
+// }

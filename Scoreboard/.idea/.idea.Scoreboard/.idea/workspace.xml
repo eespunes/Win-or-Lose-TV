@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fa6dc70-f9d5-4afd-84cb-41ec8b460fbf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Scoreboard/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Scoreboard/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Scoreboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Scoreboard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Match.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Match.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Loader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Loader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/TableGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/TableGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,15 +55,16 @@
         <option value="$PROJECT_DIR$/Assets/Plugins/Ardity/Scripts/SerialController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SingletonMatchType.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Resources/season.txt" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/FileReader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Loader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/TableGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" />
       </list>
     </option>
   </component>
@@ -180,7 +181,8 @@
       <workItem from="1580756479919" duration="440000" />
       <workItem from="1581691153085" duration="8192000" />
       <workItem from="1581964027379" duration="143000" />
-      <workItem from="1582215534014" duration="4467000" />
+      <workItem from="1582215534014" duration="4556000" />
+      <workItem from="1582221468614" duration="6482000" />
     </task>
     <servers />
   </component>
@@ -215,19 +217,24 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="960" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579458638013" />
-    <state x="607" y="210" key="RiderGenerateDialog" timestamp="1582219795478">
+    <state x="607" y="210" key="RiderGenerateDialog" timestamp="1582227543486">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="607" y="210" key="RiderGenerateDialog/0.0.1536.864@0.0.1536.864" timestamp="1582219795478" />
+    <state x="607" y="210" key="RiderGenerateDialog/0.0.1536.864@0.0.1536.864" timestamp="1582227543486" />
     <state x="1011" y="262" key="RiderGenerateDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1576182680851" />
     <state x="462" y="94" key="SettingsEditor" timestamp="1579975158876">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="277" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1577097062707" />
     <state x="462" y="94" key="SettingsEditor/0.0.2560.1080@0.0.2560.1080" timestamp="1579975158876" />
-    <state x="936" y="250" key="run.anything.popup" timestamp="1576256965503">
-      <screen x="0" y="0" width="2560" height="1080" />
+    <state x="567" y="136" key="VCS.ChangeListViewerDialog" timestamp="1582221521188">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="567" y="136" key="VCS.ChangeListViewerDialog/0.0.1536.864@0.0.1536.864" timestamp="1582221521188" />
+    <state x="562" y="200" key="run.anything.popup" timestamp="1582222415216">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="562" y="200" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1582222415216" />
     <state x="936" y="250" key="run.anything.popup/0.0.2560.1080@0.0.2560.1080" timestamp="1576256965503" />
     <state x="566" y="188" width="672" height="543" key="search.everywhere.popup" timestamp="1582215586259">
       <screen x="0" y="0" width="1536" height="864" />

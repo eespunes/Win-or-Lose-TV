@@ -14,6 +14,7 @@ public class Team : IComparable<Team>
     private bool isPlaying;
     private char homeVisitor;
     private int playingScore;
+    private int playingFaults;
     private string streak;
 
     public Team(string name, int matchsPlayed, int points, int goalsFor, int goalsAgainst, int won, int drawn, int lost,
@@ -30,6 +31,94 @@ public class Team : IComparable<Team>
         this.streak = streak;
         isPlaying = false;
         playingScore = 0;
+        playingFaults = 0;
+    }
+
+    public void IncreaseScore(Team team)
+    {
+        ResetValues(team);
+
+        playingScore++;
+
+        AddValues(team);
+    }
+
+    public void DecreaseScore(Team team)
+    {
+        if (playingScore > 0)
+        {
+            ResetValues(team);
+
+            playingScore--;
+
+            AddValues(team);
+        }
+    }
+
+    private void ResetValues(Team team)
+    {
+        if (playingScore > team.PlayingScore)
+        {
+            points -= 3;
+            won--;
+            team.lost--;
+        }
+        else if (playingScore == team.PlayingScore)
+        {
+            points--;
+            drawn--;
+            team.points--;
+            team.drawn--;
+        }
+        else
+        {
+            lost--;
+            team.won--;
+            team.points -= 3;
+        }
+
+        goalsFor -= playingScore;
+        goalsAgainst -= team.playingScore;
+        team.goalsFor -= team.playingScore;
+        team.goalsAgainst -= playingScore;
+    }
+
+    private void AddValues(Team team)
+    {
+        if (playingScore > team.PlayingScore)
+        {
+            points += 3;
+            won++;
+            team.lost++;
+        }
+        else if (playingScore == team.PlayingScore)
+        {
+            points++;
+            drawn++;
+            team.points++;
+            team.drawn++;
+        }
+        else
+        {
+            lost++;
+            team.points += 3;
+            team.won++;
+        }
+
+        goalsFor += playingScore;
+        goalsAgainst += team.playingScore;
+        team.goalsFor += team.playingScore;
+        team.goalsAgainst += playingScore;
+    }
+
+    public void IncreaseFault()
+    {
+        playingFaults++;
+    }
+
+    public void ResetFaults()
+    {
+        playingFaults = 0;
     }
 
     //Getters and Setters
@@ -98,57 +187,7 @@ public class Team : IComparable<Team>
         get => playingScore;
     }
 
-    public void IncreaseScore(Team team)
-    {
-        ChangeValues2(team);
-
-        playingScore++;
-        goalsFor++;
-
-        ChangeValues(team);
-    }
-
-    private void ChangeValues2(Team team)
-    {
-        if (playingScore > team.PlayingScore)
-        {
-            points -= 3;
-            won--;
-        }
-        else if (playingScore == team.PlayingScore)
-        {
-            points--;
-            drawn--;
-        }
-        else
-            lost--;
-    }
-
-    private void ChangeValues(Team team)
-    {
-        if (playingScore > team.PlayingScore)
-        {
-            points += 3;
-            won++;
-        }
-        else if (playingScore == team.PlayingScore)
-        {
-            points++;
-            drawn++;
-        }
-        else
-            lost++;
-    }
-
-    public void DecreaseScore(Team team)
-    {
-        ChangeValues2(team);
-
-        playingScore--;
-        goalsFor--;
-
-        ChangeValues(team);
-    }
+    public int PlayingFaults => playingFaults;
 
     public int CompareTo(Team obj)
     {
