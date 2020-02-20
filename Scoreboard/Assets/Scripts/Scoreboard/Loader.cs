@@ -73,14 +73,14 @@ public class Loader
         dict.Add("Not Playing", notPlaying);
 
         var lRatxa = Resources.LoadAll("Videos/Table/Streak", typeof(VideoClip)).Cast<VideoClip>();
-        var ratxa = new VideoClip[lPlaying.Count()];
+        var streak = new VideoClip[lPlaying.Count()];
         lCounter = 0;
         foreach (var VARIABLE in lRatxa)
         {
-            ratxa[lCounter] = VARIABLE;
+            streak[lCounter] = VARIABLE;
             lCounter++;
         }
-        dict.Add("Ratxa", ratxa);
+        dict.Add("Streak", streak);
         return dict;
     }
 

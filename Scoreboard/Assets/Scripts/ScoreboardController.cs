@@ -1,17 +1,17 @@
-﻿// using System;
-// using System.Collections.Generic;
-// using System.Globalization;
-// using System.IO;
-// using System.Linq;
-// using System.Net;
-// using System.Xml;
-// using UnityEngine;
-// using UnityEngine.UI;
-// using UnityEngine.Video;
-// using System.Text.RegularExpressions;
-//
-// public class ScoreboardController : MonoBehaviour
-// {
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Xml;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video;
+using System.Text.RegularExpressions;
+
+public class ScoreboardController : MonoBehaviour
+{
 //     private VideoPlayer _mMasterVideoPlayer, _mTimeoutVideoPlayer;
 //
 //     private AudioSource _mAudioSource;
@@ -71,25 +71,25 @@
 //     private Dictionary<string, string[]> mFileMap;
 //     private bool halfTablePlayed;
 //
-//     private void Awake()
-//     {
-//         _mAudioSource = GetComponent<AudioSource>();
-//         _mAnimator = transform.GetChild(3).GetComponent<Animator>();
-//         _mStoppedTime = SingletonMatchType.GetInstance().StoppedTime;
-//         _mMaxTime = SingletonMatchType.GetInstance().MaxTime;
-//         FindVideoPlayer();
-//         FindTexts();
-//         FindTable();
-//         LoadAudio();
-//         LoadVideos();
-//
-//         _mMasterVideoPlayer.clip = _mDefaultVideoClip;
-//         
-//         foreach (var VARIABLE in new TableGenerator().Table.Sort((x,y)=>x.CompareTo(y)))
-//         {
-//             print(VARIABLE);
-//         }
-//     }
+     private void Awake()
+     {
+         // _mAudioSource = GetComponent<AudioSource>();
+         // _mAnimator = transform.GetChild(3).GetComponent<Animator>();
+         // _mStoppedTime = SingletonMatchType.GetInstance().StoppedTime;
+         // _mMaxTime = SingletonMatchType.GetInstance().MaxTime;
+         // FindVideoPlayer();
+         // FindTexts();
+         // FindTable();
+         // LoadAudio();
+         // LoadVideos();
+         //
+         // _mMasterVideoPlayer.clip = _mDefaultVideoClip;
+         
+         foreach (var VARIABLE in new TableGenerator(new ScoreboardGUI()).Table.Sort((x,y)=>x.CompareTo(y)))
+         {
+             print(VARIABLE);
+         }
+     }
 //
 //     private bool PlayingTeam(string team)
 //     {
@@ -1458,96 +1458,96 @@
 //         Debug.Log("All Videos Loaded");
 //     }
 
-    private void FindVideoPlayer()
-    {
-        _mMasterVideoPlayer = transform.GetChild(0).GetComponent<VideoPlayer>();
-        _mTimeoutVideoPlayer = transform.GetChild(1).GetComponent<VideoPlayer>();
-    }
-
-    private void FindTexts()
-    {
-        Transform parent = transform.GetChild(3);
-        _mTimeText = parent.GetChild(0).GetComponent<Text>();
-        _mHomeScoreText = parent.GetChild(1).GetComponent<Text>();
-        _mAwayScoreText = parent.GetChild(2).GetComponent<Text>();
-
-        _mHomeFaultsUI = new GameObject[parent.GetChild(4).childCount];
-        int lCounter = 0;
-        foreach (Transform lTransform in parent.GetChild(4))
-        {
-            lTransform.gameObject.SetActive(false);
-            _mHomeFaultsUI[lCounter] = lTransform.gameObject;
-            lCounter++;
-        }
-
-        _mAwayFaultsUI = new GameObject[parent.GetChild(5).childCount];
-        lCounter = 0;
-        foreach (Transform lTransform in parent.GetChild(5))
-        {
-            lTransform.gameObject.SetActive(false);
-            _mAwayFaultsUI[lCounter] = lTransform.gameObject;
-            lCounter++;
-        }
-    }
-
-    private void FindTable()
-    {
-        mEquips = new VideoPlayer[16];
-        mRatxa1 = new VideoPlayer[16];
-        mRatxa2 = new VideoPlayer[16];
-        mRatxa3 = new VideoPlayer[16];
-        mRatxa4 = new VideoPlayer[16];
-
-        mPunts = new Text[16];
-        mGuanyats = new Text[16];
-        mEmpatats = new Text[16];
-        mPerduts = new Text[16];
-        mJugats = new Text[16];
-
-        MeshRenderer[] lEquips = new MeshRenderer[16];
-        MeshRenderer[] lRatxa1 = new MeshRenderer[16];
-        MeshRenderer[] lRatxa2 = new MeshRenderer[16];
-        MeshRenderer[] lRatxa3 = new MeshRenderer[16];
-        MeshRenderer[] lRatxa4 = new MeshRenderer[16];
-
-        int lCounter = 0;
-
-        foreach (Transform lTransform in mTableRenderer.GetChild(0))
-        {
-            lEquips[lCounter] = lTransform.GetComponent<MeshRenderer>();
-            lRatxa1[lCounter] = lTransform.GetChild(0).GetComponent<MeshRenderer>();
-            lRatxa2[lCounter] = lTransform.GetChild(1).GetComponent<MeshRenderer>();
-            lRatxa3[lCounter] = lTransform.GetChild(2).GetComponent<MeshRenderer>();
-            lRatxa4[lCounter] = lTransform.GetChild(3).GetComponent<MeshRenderer>();
-            lCounter++;
-        }
-
-        lCounter = 0;
-
-        foreach (Transform lTransform in transform.GetChild(2))
-        {
-            mEquips[lCounter] = lTransform.GetComponent<VideoPlayer>();
-            mEquips[lCounter].targetMaterialRenderer = lEquips[lCounter];
-            mRatxa1[lCounter] = lTransform.GetChild(0).GetComponent<VideoPlayer>();
-            mRatxa1[lCounter].targetMaterialRenderer = lRatxa1[lCounter];
-            mRatxa2[lCounter] = lTransform.GetChild(1).GetComponent<VideoPlayer>();
-            mRatxa2[lCounter].targetMaterialRenderer = lRatxa2[lCounter];
-            mRatxa3[lCounter] = lTransform.GetChild(2).GetComponent<VideoPlayer>();
-            mRatxa3[lCounter].targetMaterialRenderer = lRatxa3[lCounter];
-            mRatxa4[lCounter] = lTransform.GetChild(3).GetComponent<VideoPlayer>();
-            mRatxa4[lCounter].targetMaterialRenderer = lRatxa4[lCounter];
-            lCounter++;
-        }
-
-        lCounter = 0;
-        foreach (Transform lTransform in mTableRenderer.GetChild(1))
-        {
-            mPunts[lCounter] = lTransform.GetChild(0).GetComponent<Text>();
-            mJugats[lCounter] = lTransform.GetChild(1).GetComponent<Text>();
-            mGuanyats[lCounter] = lTransform.GetChild(2).GetComponent<Text>();
-            mEmpatats[lCounter] = lTransform.GetChild(3).GetComponent<Text>();
-            mPerduts[lCounter] = lTransform.GetChild(4).GetComponent<Text>();
-            lCounter++;
-        }
-    }
+//     private void FindVideoPlayer()
+//     {
+//         _mMasterVideoPlayer = transform.GetChild(0).GetComponent<VideoPlayer>();
+//         _mTimeoutVideoPlayer = transform.GetChild(1).GetComponent<VideoPlayer>();
+//     }
+//
+//     private void FindTexts()
+//     {
+//         Transform parent = transform.GetChild(3);
+//         _mTimeText = parent.GetChild(0).GetComponent<Text>();
+//         _mHomeScoreText = parent.GetChild(1).GetComponent<Text>();
+//         _mAwayScoreText = parent.GetChild(2).GetComponent<Text>();
+//
+//         _mHomeFaultsUI = new GameObject[parent.GetChild(4).childCount];
+//         int lCounter = 0;
+//         foreach (Transform lTransform in parent.GetChild(4))
+//         {
+//             lTransform.gameObject.SetActive(false);
+//             _mHomeFaultsUI[lCounter] = lTransform.gameObject;
+//             lCounter++;
+//         }
+//
+//         _mAwayFaultsUI = new GameObject[parent.GetChild(5).childCount];
+//         lCounter = 0;
+//         foreach (Transform lTransform in parent.GetChild(5))
+//         {
+//             lTransform.gameObject.SetActive(false);
+//             _mAwayFaultsUI[lCounter] = lTransform.gameObject;
+//             lCounter++;
+//         }
+//     }
+//
+//     private void FindTable()
+//     {
+//         mEquips = new VideoPlayer[16];
+//         mRatxa1 = new VideoPlayer[16];
+//         mRatxa2 = new VideoPlayer[16];
+//         mRatxa3 = new VideoPlayer[16];
+//         mRatxa4 = new VideoPlayer[16];
+//
+//         mPunts = new Text[16];
+//         mGuanyats = new Text[16];
+//         mEmpatats = new Text[16];
+//         mPerduts = new Text[16];
+//         mJugats = new Text[16];
+//
+//         MeshRenderer[] lEquips = new MeshRenderer[16];
+//         MeshRenderer[] lRatxa1 = new MeshRenderer[16];
+//         MeshRenderer[] lRatxa2 = new MeshRenderer[16];
+//         MeshRenderer[] lRatxa3 = new MeshRenderer[16];
+//         MeshRenderer[] lRatxa4 = new MeshRenderer[16];
+//
+//         int lCounter = 0;
+//
+//         foreach (Transform lTransform in mTableRenderer.GetChild(0))
+//         {
+//             lEquips[lCounter] = lTransform.GetComponent<MeshRenderer>();
+//             lRatxa1[lCounter] = lTransform.GetChild(0).GetComponent<MeshRenderer>();
+//             lRatxa2[lCounter] = lTransform.GetChild(1).GetComponent<MeshRenderer>();
+//             lRatxa3[lCounter] = lTransform.GetChild(2).GetComponent<MeshRenderer>();
+//             lRatxa4[lCounter] = lTransform.GetChild(3).GetComponent<MeshRenderer>();
+//             lCounter++;
+//         }
+//
+//         lCounter = 0;
+//
+//         foreach (Transform lTransform in transform.GetChild(2))
+//         {
+//             mEquips[lCounter] = lTransform.GetComponent<VideoPlayer>();
+//             mEquips[lCounter].targetMaterialRenderer = lEquips[lCounter];
+//             mRatxa1[lCounter] = lTransform.GetChild(0).GetComponent<VideoPlayer>();
+//             mRatxa1[lCounter].targetMaterialRenderer = lRatxa1[lCounter];
+//             mRatxa2[lCounter] = lTransform.GetChild(1).GetComponent<VideoPlayer>();
+//             mRatxa2[lCounter].targetMaterialRenderer = lRatxa2[lCounter];
+//             mRatxa3[lCounter] = lTransform.GetChild(2).GetComponent<VideoPlayer>();
+//             mRatxa3[lCounter].targetMaterialRenderer = lRatxa3[lCounter];
+//             mRatxa4[lCounter] = lTransform.GetChild(3).GetComponent<VideoPlayer>();
+//             mRatxa4[lCounter].targetMaterialRenderer = lRatxa4[lCounter];
+//             lCounter++;
+//         }
+//
+//         lCounter = 0;
+//         foreach (Transform lTransform in mTableRenderer.GetChild(1))
+//         {
+//             mPunts[lCounter] = lTransform.GetChild(0).GetComponent<Text>();
+//             mJugats[lCounter] = lTransform.GetChild(1).GetComponent<Text>();
+//             mGuanyats[lCounter] = lTransform.GetChild(2).GetComponent<Text>();
+//             mEmpatats[lCounter] = lTransform.GetChild(3).GetComponent<Text>();
+//             mPerduts[lCounter] = lTransform.GetChild(4).GetComponent<Text>();
+//             lCounter++;
+//         }
+//     }
 }

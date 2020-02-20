@@ -86,23 +86,44 @@ public class TableGenerator
         }
     }
 
-    private void ToGUI()
+    public void ToGUI()
     {
         int counter = 0;
         foreach (var team in table)
         {
             Color color = team.IsPlaying ? scoreboardGui.playingColor : scoreboardGui.notPlayingColor;
-            // mEquips[lCounter].clip = mPlaying[FindTeam(team)];
-            mJugats[counter].text = team.MatchsPlayed;
-            mJugats[counter].color = color;
-            mPunts[counter].text = team.Points;
-            mPunts[counter].color = color;
-            mGuanyats[counter].text = team.Won;
-            mGuanyats[counter].color = color;
-            mEmpatats[counter].text = team.Drawn;
-            mEmpatats[counter].color = color;
-            mPerduts[counter].text = team.Lost;
-            mPerduts[counter].color = color;
+            scoreboardGui.Teams[counter].clip =
+                scoreboardGui.TableVideosDict[team.IsPlaying ? "Playing" : "Not Playing"][FindTeam(team)];
+            scoreboardGui.Played[counter].text = team.MatchsPlayed.ToString();
+            scoreboardGui.Played[counter].color = color;
+            scoreboardGui.Points[counter].text = team.Points.ToString();
+            scoreboardGui.Points[counter].color = color;
+            scoreboardGui.Won[counter].text = team.Won.ToString();
+            scoreboardGui.Won[counter].color = color;
+            scoreboardGui.Drawn[counter].text = team.Drawn.ToString();
+            scoreboardGui.Drawn[counter].color = color;
+            scoreboardGui.Lost[counter].text = team.Lost.ToString();
+            scoreboardGui.Lost[counter].color = color;
+            int x = 0;
+            foreach (var c in team.Streak)
+            {
+                if (x == 0)
+                {
+                    x++;
+                    continue;
+                }
+
+                if (c == 'G')
+                    scoreboardGui.Streak[x - 1, counter].clip = scoreboardGui.TableVideosDict["Streak"][3];
+                else if (c == 'E')
+                    scoreboardGui.Streak[x - 1, counter].clip = scoreboardGui.TableVideosDict["Streak"][1];
+                else if (c == 'P')
+                    scoreboardGui.Streak[x - 1, counter].clip = scoreboardGui.TableVideosDict["Streak"][0];
+                else if (c == 'N' || c == 'S')
+                    scoreboardGui.Streak[x - 1, counter].clip = scoreboardGui.TableVideosDict["Streak"][2];
+                x++;
+            }
+
             counter++;
         }
     }

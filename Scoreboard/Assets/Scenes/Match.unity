@@ -18210,8 +18210,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5157044547455573374, guid: deb3a08fa0d7ae34293b6810412a15f2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: deb3a08fa0d7ae34293b6810412a15f2, type: 3}
+--- !u!1 &2027281162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5157044547455573251, guid: deb3a08fa0d7ae34293b6810412a15f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2027281161}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2027281163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027281162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7611874dfd704b51a00af73d161dcb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notPlayingColor: {r: 0.7686275, g: 0.92549026, b: 0.043137256, a: 1}
+  playingColor: {r: 0, g: 0, b: 0.19607843, a: 1}
+  tableRenderer: {fileID: 1542962329}
 --- !u!1 &2031960108
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,6 +48,7 @@
           <e p="Scoreboard" t="Include">
             <e p="FileReader.cs" t="Include" />
             <e p="Loader.cs" t="Include" />
+            <e p="MatchController.cs" t="Include" />
             <e p="ScoreboardGUI.cs" t="Include" />
             <e p="TableGenerator.cs" t="Include" />
             <e p="Team.cs" t="Include" />
