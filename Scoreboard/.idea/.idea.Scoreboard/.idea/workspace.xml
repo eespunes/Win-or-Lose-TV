@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4fa6dc70-f9d5-4afd-84cb-41ec8b460fbf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Scoreboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Scoreboard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Audio/Ending.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Audio/Ending.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MatchCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MatchCanvas.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Match.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Match.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Loader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Loader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +63,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/FileReader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MatchConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/Resources/config.txt" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Loader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" />
       </list>
     </option>
   </component>
@@ -196,6 +195,7 @@
       <workItem from="1582302110231" duration="4000" />
       <workItem from="1582302243062" duration="1256000" />
       <workItem from="1582303596534" duration="2996000" />
+      <workItem from="1582307531818" duration="884000" />
     </task>
     <servers />
   </component>

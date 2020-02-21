@@ -172,11 +172,13 @@ public class MatchController
         if (!firstHalf && !secondHalf)
         {
             firstHalf = true;
+            scoreboardGui.Half.text = "1";
         }
         else if (firstHalf)
         {
             firstHalf = false;
             secondHalf = true;
+            scoreboardGui.Half.text = "2";
         }
 
         ResetFaults();

@@ -29,6 +29,8 @@ public class ScoreboardGUI : MonoBehaviour
     private Text time;
     private Text homeScore;
     private Text awayScore;
+    private Text half;
+
     private GameObject[] homeFaults;
     private GameObject[] awayFaults;
     private Dictionary<string, AudioClip> audioDict;
@@ -46,6 +48,8 @@ public class ScoreboardGUI : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
+        
         animator = transform.GetChild(3).GetComponent<Animator>();
         videosDict = Loader.LoadVideos();
         tableVideosDict = Loader.LoadTableVideos();
@@ -87,24 +91,24 @@ public class ScoreboardGUI : MonoBehaviour
     public IEnumerator PreMatch()
     {
         tableGenerator.ToGUI();
-        audioSource.clip = audioDict["Intro"];
-        audioSource.loop = false;
-        audioSource.Play();
-        InvokeRepeating(nameof(IncreaseSong), 0, .1f);
-
-        ChangeVideo(videosDict["Intro"]);
-        yield return new WaitForSeconds((float) videosDict["Intro"].length);
-        audioSource.clip = audioDict["Loop"];
-        audioSource.loop = true;
-        audioSource.Play();
-        ChangeVideo(videosDict["Default"]);
-        yield return new WaitForSeconds(5);
-
-        ChangeVideo(videosDict["Pre Match"]);
-        yield return new WaitForSeconds((float) videosDict["Pre Match"].length);
-
-        ChangeVideo(videosDict["Default"]);
-        yield return new WaitForSeconds(5);
+        // audioSource.clip = audioDict["Intro"];
+        // audioSource.loop = false;
+        // audioSource.Play();
+        // InvokeRepeating(nameof(IncreaseSong), 0, .1f);
+        //
+        // ChangeVideo(videosDict["Intro"]);
+        // yield return new WaitForSeconds((float) videosDict["Intro"].length);
+        // audioSource.clip = audioDict["Loop"];
+        // audioSource.loop = true;
+        // audioSource.Play();
+        // ChangeVideo(videosDict["Default"]);
+        // yield return new WaitForSeconds(5);
+        //
+        // ChangeVideo(videosDict["Pre Match"]);
+        // yield return new WaitForSeconds((float) videosDict["Pre Match"].length);
+        //
+        // ChangeVideo(videosDict["Default"]);
+        // yield return new WaitForSeconds(5);
 
         ChangeVideo(videosDict["Table"]);
         tableRenderer.gameObject.SetActive(true);
@@ -278,7 +282,7 @@ public class ScoreboardGUI : MonoBehaviour
         yield return new WaitForSeconds((float) videosDict["Timeout"].length);
         matchController.StopTimeout();
     }
-    
+
     // FAULTS CONTROLLERS
     public IEnumerator HomeFaults(int faults)
     {
@@ -337,14 +341,14 @@ public class ScoreboardGUI : MonoBehaviour
             }
         }
     }
-    
+
     // VIDEO CONTROLLER
     public void ChangeVideo(VideoClip videoClip)
     {
         masterVideoPlayer.clip = videoClip;
         masterVideoPlayer.Play();
     }
-    
+
     // AUDIO CONTROLLERS
     private void IncreaseSong()
     {
@@ -356,7 +360,7 @@ public class ScoreboardGUI : MonoBehaviour
             CancelInvoke(nameof(IncreaseSong));
         }
     }
-    
+
     private void DecreaseSong()
     {
         audioSource.volume -= .05f;
@@ -368,20 +372,21 @@ public class ScoreboardGUI : MonoBehaviour
             CancelInvoke(nameof(DecreaseSong));
         }
     }
-    
+
     // SCENE FINDERS
     private void FindVideoPlayer()
     {
         masterVideoPlayer = transform.GetChild(0).GetComponent<VideoPlayer>();
         timeoutVideoPlayer = transform.GetChild(1).GetComponent<VideoPlayer>();
     }
-    
+
     private void FindTexts()
     {
         Transform parent = transform.GetChild(3);
         time = parent.GetChild(0).GetComponent<Text>();
         homeScore = parent.GetChild(1).GetComponent<Text>();
         awayScore = parent.GetChild(2).GetComponent<Text>();
+        half = parent.GetChild(6).GetComponent<Text>();
         homeFaults = new GameObject[parent.GetChild(4).childCount];
         int lCounter = 0;
         foreach (Transform lTransform in parent.GetChild(4))
@@ -441,11 +446,11 @@ public class ScoreboardGUI : MonoBehaviour
         counter = 0;
         foreach (Transform lTransform in tableRenderer.GetChild(1))
         {
-            points[counter] = lTransform.GetChild(0).GetComponent<Text>();
-            played[counter] = lTransform.GetChild(1).GetComponent<Text>();
-            won[counter] = lTransform.GetChild(2).GetComponent<Text>();
-            drawn[counter] = lTransform.GetChild(3).GetComponent<Text>();
-            lost[counter] = lTransform.GetChild(4).GetComponent<Text>();
+            points[counter] = lTransform.GetChild(4).GetComponent<Text>();
+            played[counter] = lTransform.GetChild(0).GetComponent<Text>();
+            won[counter] = lTransform.GetChild(3).GetComponent<Text>();
+            drawn[counter] = lTransform.GetChild(2).GetComponent<Text>();
+            lost[counter] = lTransform.GetChild(1).GetComponent<Text>();
             counter++;
         }
     }
@@ -474,4 +479,5 @@ public class ScoreboardGUI : MonoBehaviour
     public Text HomeScore => homeScore;
 
     public Text AwayScore => awayScore;
+    public Text Half => half;
 }

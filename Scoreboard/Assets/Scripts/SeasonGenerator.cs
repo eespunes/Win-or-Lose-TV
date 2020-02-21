@@ -64,7 +64,6 @@ public class SeasonGenerator : MonoBehaviour
         {
             string thing = mDropdown.options[mDropdown.value].text;
             MatchConfig.GetInstance().Match = thing.Split('-')[0];
-            print(MatchConfig.GetInstance().Match);
             SceneManager.LoadScene(1);
         }
     }

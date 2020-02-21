@@ -13947,6 +13947,11 @@ PrefabInstance:
       propertyPath: m_TargetMaterialRenderer
       value: 
       objectReference: {fileID: 182490509}
+    - target: {fileID: 2542270441328911161, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: m_Name
+      value: Upper Scoreboard Loop Time Text
+      objectReference: {fileID: 0}
     - target: {fileID: 3516146383052779243, guid: deb3a08fa0d7ae34293b6810412a15f2,
         type: 3}
       propertyPath: m_TargetMaterialRenderer
@@ -13971,11 +13976,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MatchCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 5157044547455573373, guid: deb3a08fa0d7ae34293b6810412a15f2,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5157044547455573375, guid: deb3a08fa0d7ae34293b6810412a15f2,
         type: 3}
@@ -14081,6 +14081,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443499163032258533, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: m_Name
+      value: Upper Scoreboard Loop Home Score Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247592794623419930, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247592794623419930, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: m_Name
+      value: Half Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948082223259246886, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: m_Name
+      value: Upper Scoreboard Loop Away Score Text
       objectReference: {fileID: 0}
     - target: {fileID: 8986017773560760258, guid: deb3a08fa0d7ae34293b6810412a15f2,
         type: 3}
