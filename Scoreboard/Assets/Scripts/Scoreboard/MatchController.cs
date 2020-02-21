@@ -55,15 +55,12 @@ public class MatchController
             if (Input.GetKeyDown(KeyCode.T))
                 StartTimeout();
         }
+        else if (Input.GetKeyDown(KeyCode.M))
+            //INTRO
+            scoreboardGui.StartCoroutine(scoreboardGui.PreMatch());
     }
 
-    private void StartTimeout()
-    {
-        timeout = true;
-        playing = false;
-        scoreboardGui.StartCoroutine(scoreboardGui.Timeout());
-    }
-
+    // TIME CONTROLLER
     private void StartTime()
     {
         if (playing)
@@ -129,20 +126,6 @@ public class MatchController
         }
     }
 
-    private void EndHalf()
-    {
-        playing = false;
-        startHalf = true;
-        if (firstHalf)
-            scoreboardGui.StartCoroutine(scoreboardGui.HalfMatch());
-
-        else if (secondHalf)
-            scoreboardGui.StartCoroutine(scoreboardGui.EndMatch());
-
-
-        scoreboardGui.StartCoroutine(scoreboardGui.StopUpperOrStartBottom(false));
-    }
-
     private void StopTime()
     {
         playing = false;
@@ -183,6 +166,7 @@ public class MatchController
         }
     }
 
+    // HALF CONTROLLER
     private void ChangeHalf()
     {
         if (!firstHalf && !secondHalf)
@@ -198,10 +182,18 @@ public class MatchController
         ResetFaults();
     }
 
-    private void ResetFaults()
+    private void EndHalf()
     {
-        homeTeam.ResetFaults();
-        awayTeam.ResetFaults();
+        playing = false;
+        startHalf = true;
+        if (firstHalf)
+            scoreboardGui.StartCoroutine(scoreboardGui.HalfMatch());
+
+        else if (secondHalf)
+            scoreboardGui.StartCoroutine(scoreboardGui.EndMatch());
+
+
+        scoreboardGui.StartCoroutine(scoreboardGui.StopUpperOrStartBottom(false));
     }
 
     private bool EndFirstHalf()
@@ -214,6 +206,41 @@ public class MatchController
         return playing && time / 60 >= MatchConfig.GetInstance().MaxTime * 2 - 1 && secondHalf;
     }
 
+    // TIMEOUT CONTROLLER
+    private void StartTimeout()
+    {
+        timeout = true;
+        playing = false;
+        scoreboardGui.StartCoroutine(scoreboardGui.Timeout());
+    }
+
+    public void StopTimeout()
+    {
+        timeout = false;
+        if (!MatchConfig.GetInstance().StoppedTime)
+            StartTime();
+    }
+
+    // FAULTS CONTROLLER
+    private void HomeFault()
+    {
+        homeTeam.IncreaseFault();
+        scoreboardGui.StartCoroutine(scoreboardGui.HomeFaults(homeTeam.PlayingFaults));
+    }
+
+    private void AwayFault()
+    {
+        awayTeam.IncreaseFault();
+        scoreboardGui.StartCoroutine(scoreboardGui.AwayFaults(awayTeam.PlayingFaults));
+    }
+
+    private void ResetFaults()
+    {
+        homeTeam.ResetFaults();
+        awayTeam.ResetFaults();
+    }
+
+    //GOALS CONTROLLER
     private void IncreaseScoreHome()
     {
         scoreboardGui.StopAllCoroutines();
@@ -223,12 +250,6 @@ public class MatchController
             StopTime();
 
         scoreboardGui.StartCoroutine(scoreboardGui.Goal("Home Goal"));
-    }
-
-    private void DecreaseScoreHome()
-    {
-        homeTeam.DecreaseScore(awayTeam);
-        scoreboardGui.HomeScore.text = homeTeam.PlayingScore.ToString();
     }
 
     private void IncreaseScoreAway()
@@ -243,33 +264,20 @@ public class MatchController
         scoreboardGui.StartCoroutine(scoreboardGui.Goal("Away Goal"));
     }
 
+    private void DecreaseScoreHome()
+    {
+        homeTeam.DecreaseScore(awayTeam);
+        scoreboardGui.HomeScore.text = homeTeam.PlayingScore.ToString();
+    }
+
     private void DecreaseScoreAway()
     {
         awayTeam.DecreaseScore(homeTeam);
         scoreboardGui.AwayScore.text = awayTeam.PlayingScore.ToString();
     }
 
-    private void HomeFault()
-    {
-        homeTeam.IncreaseFault();
-        scoreboardGui.StartCoroutine(scoreboardGui.HomeFaults(homeTeam.PlayingFaults));
-    }
-
-
-    private void AwayFault()
-    {
-        awayTeam.IncreaseFault();
-        scoreboardGui.StartCoroutine(scoreboardGui.AwayFaults(awayTeam.PlayingFaults));
-    }
-
+    // GETTERS
     public bool Playing => playing;
 
     public bool Timeout => timeout;
-
-    public void StopTimeout()
-    {
-        timeout = false;
-        if (!MatchConfig.GetInstance().StoppedTime)
-            StartTime();
-    }
 }

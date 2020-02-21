@@ -46,8 +46,7 @@ public class Loader
         dict.Add("Table",  Resources.Load<VideoClip>("Videos/Table/table"));
         return dict;
     }
-
-
+    
     public static Dictionary<string,VideoClip[]> LoadTableVideos()
     {
         var dict = new Dictionary<string, VideoClip[]>();
