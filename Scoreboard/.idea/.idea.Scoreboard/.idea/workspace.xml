@@ -2,13 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fa6dc70-f9d5-4afd-84cb-41ec8b460fbf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Loading.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Loading.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Loading.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Scoreboard/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Scoreboard/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Scoreboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Scoreboard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MatchCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MatchCanvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Match.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Match.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/FileReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/FileReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Loader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Loader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/TableGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/TableGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Loading.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SingletonMatchType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MatchConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SingletonMatchType.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MatchConfig.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,15 +33,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Ardity/Scripts/Threads/SerialThreadLines.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Ardity/Scripts/Samples/SampleUserPolling_JustRead.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SingletonMatchType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MatchConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scoreboard/Loader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scoreboard/TableGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Ardity/Scripts/SerialController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Sixpolys/SIXP Autosaver/Editor/AutoSave.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Loading.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Match.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scoreboard/FileReader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89A51479-21E5-48D1-B8DD-CFF8078F62CD/d1/aa88b78f/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" root0="FORCE_HIGHLIGHTING" />
@@ -56,15 +70,18 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SingletonMatchType.cs" />
         <option value="$PROJECT_DIR$/Assets/Resources/season.txt" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/FileReader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Loader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/TableGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/Team.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Loading.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/TableGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/ScoreboardGUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/FileReader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MatchConfig.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SeasonGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Resources/config.txt" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scoreboard/MatchController.cs" />
       </list>
     </option>
   </component>
@@ -79,6 +96,9 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="Rider.SolutionExplorerActivator" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TWShift.3" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -183,6 +203,12 @@
       <workItem from="1581964027379" duration="143000" />
       <workItem from="1582215534014" duration="4556000" />
       <workItem from="1582221468614" duration="6482000" />
+      <workItem from="1582238648714" duration="1874000" />
+      <workItem from="1582297514365" duration="2164000" />
+      <workItem from="1582300863983" duration="1198000" />
+      <workItem from="1582302110231" duration="4000" />
+      <workItem from="1582302243062" duration="1256000" />
+      <workItem from="1582303596534" duration="461000" />
     </task>
     <servers />
   </component>
@@ -217,10 +243,10 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="960" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579458638013" />
-    <state x="607" y="210" key="RiderGenerateDialog" timestamp="1582227543486">
+    <state x="607" y="210" key="RiderGenerateDialog" timestamp="1582301164742">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="607" y="210" key="RiderGenerateDialog/0.0.1536.864@0.0.1536.864" timestamp="1582227543486" />
+    <state x="607" y="210" key="RiderGenerateDialog/0.0.1536.864@0.0.1536.864" timestamp="1582301164742" />
     <state x="1011" y="262" key="RiderGenerateDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1576182680851" />
     <state x="462" y="94" key="SettingsEditor" timestamp="1579975158876">
       <screen x="0" y="0" width="2560" height="1080" />

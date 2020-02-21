@@ -2,14 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingletonMatchType
+public class MatchConfig
 {
-    private static SingletonMatchType mMatchType;
+    private static MatchConfig mMatchConfig;
     private string mMatch;
     private bool mStoppedTime;
     private int mMaxTime;
-    private string mGroupURL;
+    private string _mTableUrl;
     private bool updatedDay;
+    
+    private Dictionary<string,string[]> matchDict;
+
+    private MatchConfig()
+    {
+        matchDict = FileReader.LoadFileToDictionaryArray("season");
+    }
+
+    public static MatchConfig GetInstance()
+    {
+        if(mMatchConfig==null)
+            mMatchConfig=new MatchConfig();
+        return mMatchConfig;
+    }
+
+    public Dictionary<string, string[]> MatchDict => matchDict;
 
     public int MaxTime
     {
@@ -33,21 +49,9 @@ public class SingletonMatchType
         get => mMatch;
         set => mMatch = value;
     }
-
-    private SingletonMatchType()
+    public string TableURL
     {
-    }
-
-    public static SingletonMatchType GetInstance()
-    {
-        if(mMatchType==null)
-            mMatchType=new SingletonMatchType();
-        return mMatchType;
-    }
-
-    public string GroupURL
-    {
-        get => mGroupURL;
-        set => mGroupURL = value;
+        get => _mTableUrl;
+        set => _mTableUrl = value;
     }
 }

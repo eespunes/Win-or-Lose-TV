@@ -181,6 +181,13 @@ public class Team : IComparable<Team>
         get => isPlaying;
         set => isPlaying = value;
     }
+    
+    public void StartMatch()
+    {
+        drawn++;
+        points++;
+        matchsPlayed++;
+    }
 
     public int PlayingScore
     {

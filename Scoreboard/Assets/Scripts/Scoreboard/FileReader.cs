@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class FileReader
 {
-    public static Dictionary<string, string[]> LoadFileToDictionary(string path)
+    public static Dictionary<string, string[]> LoadFileToDictionaryArray(string path)
     {
         var fileDict = new Dictionary<string, string[]>();
         TextAsset textAsset = (TextAsset) Resources.Load(path);
@@ -14,6 +14,18 @@ public class FileReader
         {
             var array = text.Replace("\"", "").Split('\t');
             fileDict.Add(array[0], new[] {array[1], array[2].Replace("\r", "")});
+        }
+
+        return fileDict;
+    }
+    public static Dictionary<string, string> LoadFileToDictionary(string path)
+    {
+        var fileDict = new Dictionary<string, string>();
+        TextAsset textAsset = (TextAsset) Resources.Load(path);
+        foreach (var text in textAsset.text.Split('\n'))
+        {
+            var array = text.Replace("\"", "").Split('\t');
+            fileDict.Add(array[0], array[1].Replace("\r", ""));
         }
 
         return fileDict;

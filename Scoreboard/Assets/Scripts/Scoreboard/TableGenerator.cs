@@ -14,7 +14,7 @@ public class TableGenerator
     {
         this.scoreboardGui = scoreboardGui;
         table = new List<Team>();
-        var data = FileReader.LoadURL(SingletonMatchType.GetInstance().GroupURL);
+        var data = FileReader.LoadURL(MatchConfig.GetInstance().TableURL);
 
         for (int x = 0; x < data.GetLength(0); x++)
         {
@@ -38,10 +38,9 @@ public class TableGenerator
 
     private bool PlayingTeam(Team team)
     {
-        var dict = FileReader.LoadFileToDictionary("season");
         var name = team.Name.Replace("\n", "");
-        return name.Equals(dict[SingletonMatchType.GetInstance().Match][0]) ||
-               name.Equals(dict[SingletonMatchType.GetInstance().Match][1]);
+        return name.Equals(MatchConfig.GetInstance().MatchDict[MatchConfig.GetInstance().Match][0]) ||
+               name.Equals(MatchConfig.GetInstance().MatchDict[MatchConfig.GetInstance().Match][1]);
     }
 
     private int FindTeam(Team team)

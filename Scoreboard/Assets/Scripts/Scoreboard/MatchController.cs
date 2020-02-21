@@ -14,7 +14,6 @@ public class MatchController
     private bool firstHalf;
     private bool secondHalf;
     private bool timeout;
-    private bool goal;
 
     private Team homeTeam, awayTeam;
     private ScoreboardGUI scoreboardGui;
@@ -24,6 +23,7 @@ public class MatchController
         this.scoreboardGui = scoreboardGui;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
+        startHalf = true;
         scoreboardGui.HomeScore.text = homeTeam.PlayingScore.ToString();
         scoreboardGui.AwayScore.text = awayTeam.PlayingScore.ToString();
     }
@@ -68,42 +68,34 @@ public class MatchController
     {
         if (playing)
         {
-            if (SingletonMatchType.GetInstance().StoppedTime || EndFirstHalf() || EndSecondHalf())
+            if (MatchConfig.GetInstance().StoppedTime || EndFirstHalf() || EndSecondHalf())
                 StopTime();
         }
         else if (!timeout)
         {
             if (startHalf)
             {
-                time = SingletonMatchType.GetInstance().StoppedTime ? SingletonMatchType.GetInstance().MaxTime * 60 :
-                    !firstHalf ? 0 : SingletonMatchType.GetInstance().MaxTime * 60;
+                time = MatchConfig.GetInstance().StoppedTime ? MatchConfig.GetInstance().MaxTime * 60 :
+                    !firstHalf ? 0 : MatchConfig.GetInstance().MaxTime * 60;
                 playing = true;
                 startHalf = false;
+                homeTeam.StartMatch();
+                awayTeam.StartMatch();
                 ChangeHalf();
             }
-            else if (SingletonMatchType.GetInstance().StoppedTime)
+            else if (MatchConfig.GetInstance().StoppedTime)
             {
-                playing = false;
-                if (goal)
-                    goal = false;
-            }
-
-            else
-            {
-                if (time == SingletonMatchType.GetInstance().MaxTime * 60 ||
-                    !SingletonMatchType.GetInstance().StoppedTime)
-                {
-                    scoreboardGui.StartCoroutine(scoreboardGui.StopUpperOrStartBottom());
-                }
-
                 playing = true;
             }
+
+            scoreboardGui.StartCoroutine(
+                scoreboardGui.StopUpperOrStartBottom(MatchConfig.GetInstance().StoppedTime));
         }
     }
 
     private void UpdateTime()
     {
-        if (SingletonMatchType.GetInstance().StoppedTime)
+        if (MatchConfig.GetInstance().StoppedTime)
             time -= 1 * Time.deltaTime;
         else
             time += 1 * Time.deltaTime;
@@ -125,37 +117,55 @@ public class MatchController
         if (lMinutesInt == 0 && lSecondsFloat <= 0)
         {
             time = 0;
-            finalString = "00:00";
+            finalString = "00.00";
+            if (MatchConfig.GetInstance().StoppedTime)
+                EndHalf();
         }
 
         scoreboardGui.Time.text = finalString;
 
-        if (SingletonMatchType.GetInstance().StoppedTime && time == 0)
+        if (MatchConfig.GetInstance().StoppedTime && time == 0)
         {
-            StopTime();
         }
+    }
+
+    private void EndHalf()
+    {
+        playing = false;
+        startHalf = true;
+        if (firstHalf)
+            scoreboardGui.StartCoroutine(scoreboardGui.HalfMatch());
+
+        else if (secondHalf)
+            scoreboardGui.StartCoroutine(scoreboardGui.EndMatch());
+
+
+        scoreboardGui.StartCoroutine(scoreboardGui.StopUpperOrStartBottom(false));
     }
 
     private void StopTime()
     {
         playing = false;
 
-        if (!SingletonMatchType.GetInstance().StoppedTime)
+        if (!MatchConfig.GetInstance().StoppedTime)
         {
             if (firstHalf)
             {
-                time = SingletonMatchType.GetInstance().MaxTime;
+                time = MatchConfig.GetInstance().MaxTime;
                 startHalf = true;
+                scoreboardGui.StartCoroutine(scoreboardGui.HalfMatch());
             }
             else if (secondHalf)
             {
-                time = SingletonMatchType.GetInstance().MaxTime * 2;
+                time = MatchConfig.GetInstance().MaxTime * 2;
                 startHalf = true;
+                scoreboardGui.StartCoroutine(scoreboardGui.EndMatch());
             }
 
             scoreboardGui.Time.text = time + ":00";
 
-            scoreboardGui.StartCoroutine(scoreboardGui.StopUpperOrStartBottom());
+            scoreboardGui.StartCoroutine(
+                scoreboardGui.StopUpperOrStartBottom(MatchConfig.GetInstance().StoppedTime));
         }
         else if (time == 0)
         {
@@ -168,7 +178,8 @@ public class MatchController
                 startHalf = true;
             }
 
-            scoreboardGui.StartCoroutine(scoreboardGui.StopUpperOrStartBottom());
+            scoreboardGui.StartCoroutine(
+                scoreboardGui.StopUpperOrStartBottom(MatchConfig.GetInstance().StoppedTime));
         }
     }
 
@@ -189,28 +200,18 @@ public class MatchController
 
     private void ResetFaults()
     {
-        // _mHomeFaults = 0;
-        // _mAwayFaults = 0;
-        //
-        // foreach (var fault in _mHomeFaultsUI)
-        // {
-        //     fault.SetActive(false);
-        // }
-        //
-        // foreach (var fault in _mAwayFaultsUI)
-        // {
-        //     fault.SetActive(false);
-        // }
+        homeTeam.ResetFaults();
+        awayTeam.ResetFaults();
     }
 
     private bool EndFirstHalf()
     {
-        return playing && time / 60 >= SingletonMatchType.GetInstance().MaxTime - 1 && firstHalf;
+        return playing && time / 60 >= MatchConfig.GetInstance().MaxTime - 1 && firstHalf;
     }
 
     private bool EndSecondHalf()
     {
-        return playing && time / 60 >= SingletonMatchType.GetInstance().MaxTime * 2 - 1 && secondHalf;
+        return playing && time / 60 >= MatchConfig.GetInstance().MaxTime * 2 - 1 && secondHalf;
     }
 
     private void IncreaseScoreHome()
@@ -218,8 +219,7 @@ public class MatchController
         scoreboardGui.StopAllCoroutines();
         homeTeam.IncreaseScore(awayTeam);
         scoreboardGui.HomeScore.text = homeTeam.PlayingScore.ToString();
-        // goal = true;
-        if (SingletonMatchType.GetInstance().StoppedTime)
+        if (MatchConfig.GetInstance().StoppedTime)
             StopTime();
 
         scoreboardGui.StartCoroutine(scoreboardGui.Goal("Home Goal"));
@@ -237,7 +237,7 @@ public class MatchController
         awayTeam.IncreaseScore(homeTeam);
         scoreboardGui.AwayScore.text = awayTeam.PlayingScore.ToString();
         // goal = true;
-        if (SingletonMatchType.GetInstance().StoppedTime)
+        if (MatchConfig.GetInstance().StoppedTime)
             StopTime();
 
         scoreboardGui.StartCoroutine(scoreboardGui.Goal("Away Goal"));
@@ -248,7 +248,7 @@ public class MatchController
         awayTeam.DecreaseScore(homeTeam);
         scoreboardGui.AwayScore.text = awayTeam.PlayingScore.ToString();
     }
-    
+
     private void HomeFault()
     {
         homeTeam.IncreaseFault();
@@ -269,6 +269,7 @@ public class MatchController
     public void StopTimeout()
     {
         timeout = false;
-        StartTime();
+        if (!MatchConfig.GetInstance().StoppedTime)
+            StartTime();
     }
 }

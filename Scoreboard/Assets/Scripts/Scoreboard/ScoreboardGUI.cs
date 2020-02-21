@@ -57,7 +57,7 @@ public class ScoreboardGUI : MonoBehaviour
         {
             if (team.IsPlaying)
                 if (team.Name.Replace("\n", "")
-                    .Equals(FileReader.LoadFileToDictionary("season")[SingletonMatchType.GetInstance().Match][0]))
+                    .Equals(MatchConfig.GetInstance().MatchDict[MatchConfig.GetInstance().Match][0]))
                     home = team;
                 else
                     away = team;
@@ -84,11 +84,11 @@ public class ScoreboardGUI : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M) && !matchController.Playing)
-            StartCoroutine(Intro());
+            StartCoroutine(PreMatch());
         matchController.Update();
     }
 
-    IEnumerator Intro()
+    private IEnumerator PreMatch()
     {
         tableGenerator.ToGUI();
         ChangeVideo(videosDict["Intro"]);
@@ -113,6 +113,69 @@ public class ScoreboardGUI : MonoBehaviour
         transform.GetChild(2).gameObject.SetActive(false);
     }
 
+    public IEnumerator HalfMatch()
+    {
+        yield return new WaitForSeconds((float) (videosDict["Bottom"].length + 5));
+
+        tableGenerator.UpdateTable();
+        tableGenerator.ToGUI();
+        animator.SetBool(HalfTime, true);
+        ChangeVideo(videosDict["Half Intro"]);
+        yield return new WaitForSeconds((float) videosDict["Half Intro"].length);
+
+        ChangeVideo(videosDict["Half Loop"]);
+        yield return new WaitForSeconds((float) videosDict["Half Loop"].length);
+        animator.SetBool(HalfTime, false);
+        ChangeVideo(videosDict["Table"]);
+        tableRenderer.gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(true);
+        yield return new WaitForSeconds((float) videosDict["Table"].length);
+
+        tableRenderer.gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false);
+        animator.SetBool(HalfTime, true);
+        ChangeVideo(videosDict["Half Intro"]);
+        yield return new WaitForSeconds((float) videosDict["Half Intro"].length);
+
+        ChangeVideo(videosDict["Half Loop"]);
+        yield return new WaitForSeconds((float) videosDict["Half Loop"].length);
+
+        ChangeVideo(videosDict["Half Outro"]);
+        yield return new WaitForSeconds((float) videosDict["Half Outro"].length);
+        animator.SetBool(HalfTime, false);
+
+        ChangeVideo(videosDict["Default"]);
+    }
+
+    public IEnumerator EndMatch()
+    {
+        yield return new WaitForSeconds((float) (videosDict["Bottom"].length + 5));
+
+        tableGenerator.UpdateTable();
+        tableGenerator.ToGUI();
+        animator.SetBool(EndTime, true);
+        ChangeVideo(videosDict["End Match"]);
+        yield return new WaitForSeconds((float) videosDict["End Match"].length);
+
+        animator.SetBool(EndTime, false);
+        ChangeVideo(videosDict["Default"]);
+        yield return new WaitForSeconds(5);
+
+        ChangeVideo(videosDict["Table"]);
+        tableRenderer.gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(true);
+        yield return new WaitForSeconds((float) videosDict["Table"].length);
+
+        tableRenderer.gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false);
+        ChangeVideo(videosDict["Default"]);
+        yield return new WaitForSeconds(5);
+
+        ChangeVideo(videosDict["Outro"]);
+        yield return new WaitForSeconds((float) videosDict["Outro"].length);
+        ChangeVideo(videosDict["Default"]);
+    }
+
 
     private void FindVideoPlayer()
     {
@@ -120,22 +183,25 @@ public class ScoreboardGUI : MonoBehaviour
         timeoutVideoPlayer = transform.GetChild(1).GetComponent<VideoPlayer>();
     }
 
-    public IEnumerator StopUpperOrStartBottom()
+    public IEnumerator StopUpperOrStartBottom(bool stopped)
     {
         // StartCoroutine(DecreaseSong);
         if (masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_upper_loop"))
         {
-            animator.SetBool(Upper, false);
-            masterVideoPlayer.isLooping = false;
-            ChangeVideo(videosDict["Upper Outro"]);
-            yield return new WaitForSeconds((float) videosDict["Upper Outro"].length);
-            ChangeVideo(videosDict["Default"]);
+            if (!stopped)
+            {
+                animator.SetBool(Upper, false);
+                masterVideoPlayer.isLooping = false;
+                ChangeVideo(videosDict["Upper Outro"]);
+                yield return new WaitForSeconds((float) videosDict["Upper Outro"].length);
+                ChangeVideo(videosDict["Default"]);
 
-            animator.SetTrigger(Bottom);
-            ChangeVideo(videosDict["Bottom"]);
-            yield return new WaitForSeconds((float) videosDict["Bottom"].length);
+                animator.SetTrigger(Bottom);
+                ChangeVideo(videosDict["Bottom"]);
+                yield return new WaitForSeconds((float) videosDict["Bottom"].length);
 
-            ChangeVideo(videosDict["Default"]);
+                ChangeVideo(videosDict["Default"]);
+            }
         }
         else if (!(masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_bottom")))
         {
@@ -144,7 +210,7 @@ public class ScoreboardGUI : MonoBehaviour
             yield return new WaitForSeconds((float) videosDict["Bottom"].length);
 
             ChangeVideo(videosDict["Default"]);
-            if (matchController.Playing || matchController.Timeout)
+            if (matchController.Playing || matchController.Timeout || MatchConfig.GetInstance().StoppedTime)
             {
                 animator.SetBool(Upper, true);
                 ChangeVideo(videosDict["Upper Intro"]);
@@ -152,23 +218,9 @@ public class ScoreboardGUI : MonoBehaviour
                 masterVideoPlayer.isLooping = true;
                 ChangeVideo(videosDict["Upper Loop"]);
             }
-
-            else
-            {
-                // StopAllCoroutines();
-                // tableRenderer.gameObject.SetActive(false);
-                // transform.GetChild(2).gameObject.SetActive(false);
-                // ChangeVideo(videosDict["Default"]);
-                // // InvokeRepeating(nameof(IncreaseSong), .25f, .25f);
-                // // audioSource.Play();
-                //
-                // tableGenerator.UpdateTable();
-                // tableGenerator.ToGUI();
-                // // firstHalf ? yield return new WaitForSeconds((float) videosDict["Bottom"].length): yield return
-                // //     new WaitForSeconds((float) videosDict["Bottom"].length);
-            }
         }
     }
+
 
     private void FindTexts()
     {
@@ -296,7 +348,7 @@ public class ScoreboardGUI : MonoBehaviour
 
         ChangeVideo(videosDict["Default"]);
 
-        StartCoroutine(StopUpperOrStartBottom());
+        StartCoroutine(StopUpperOrStartBottom(MatchConfig.GetInstance().StoppedTime));
     }
 
     public IEnumerator Timeout()
@@ -327,7 +379,7 @@ public class ScoreboardGUI : MonoBehaviour
             homeFaults[faults - 2].SetActive(false);
         }
         else
-            StopCoroutine(HomeFaults(faults));
+            yield break;
 
 
         if (!(masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_bottom")))
@@ -356,7 +408,7 @@ public class ScoreboardGUI : MonoBehaviour
             awayFaults[faults - 2].SetActive(false);
         }
         else
-            StopCoroutine(HomeFaults(faults));
+            yield break;
 
 
         if (!(masterVideoPlayer.isPlaying && masterVideoPlayer.clip.name.Contains("_bottom")))

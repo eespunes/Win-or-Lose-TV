@@ -21,27 +21,27 @@ public class Loader
         dict.Add("Default", Resources.Load<VideoClip>("Videos/Untouchables/Default"));
         dict.Add("Outro", Resources.Load<VideoClip>("Videos/Untouchables/Outro"));
         dict.Add("Bottom",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_bottom"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_bottom"));
         dict.Add("Upper Intro",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_upper_intro"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_upper_intro"));
         dict.Add("Upper Loop",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_upper_loop"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_upper_loop"));
         dict.Add("Upper Outro",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_upper_outro"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_upper_outro"));
         dict.Add("Pre Match",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_pre"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_pre"));
         dict.Add("End Match",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_end"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_end"));
         dict.Add("Half Intro",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_half_intro"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_half_intro"));
         dict.Add("Half Loop",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_half_loop"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_half_loop"));
         dict.Add("Half Outro",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_half_outro"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_half_outro"));
         dict.Add("Home Goal",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_goal_home"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_goal_home"));
         dict.Add("Away Goal",
-            Resources.Load<VideoClip>("Videos/Season/" + SingletonMatchType.GetInstance().Match + "_goal_away"));
+            Resources.Load<VideoClip>("Videos/Season/" + MatchConfig.GetInstance().Match + "_goal_away"));
         dict.Add("Timeout", Resources.Load<VideoClip>("Videos/Untouchables/Timeout"));
         dict.Add("Table",  Resources.Load<VideoClip>("Videos/Table/table"));
         return dict;

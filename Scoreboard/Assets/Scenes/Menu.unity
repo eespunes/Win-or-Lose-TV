@@ -368,7 +368,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: J01
+  m_Text: J01-SANT ANDREU, A.E.,C
 --- !u!222 &31991066
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -575,65 +575,65 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: J01
+    - m_Text: J01-SANT ANDREU, A.E.,C
       m_Image: {fileID: 0}
-    - m_Text: J02
+    - m_Text: J02-HORTA, U.AT.,A
       m_Image: {fileID: 0}
-    - m_Text: J03
+    - m_Text: J03-PROSPERITAT NOU BARRIS CLUB ESP. FUTBOL SALA,B
       m_Image: {fileID: 0}
-    - m_Text: J04
+    - m_Text: J04-LES GLORIES 2014 CLUB FUTBOL SALA,B
       m_Image: {fileID: 0}
-    - m_Text: J05
+    - m_Text: "J05-GR\xC0CIA FUTBOL SALA CLUB,B"
       m_Image: {fileID: 0}
-    - m_Text: J06
+    - m_Text: J06-THAU, C.E.,A
       m_Image: {fileID: 0}
-    - m_Text: J07
+    - m_Text: J07-IPSE EL PILAR, C.E.,A
       m_Image: {fileID: 0}
-    - m_Text: J08
+    - m_Text: J08-CASP, A.E.,A
       m_Image: {fileID: 0}
-    - m_Text: J09
+    - m_Text: "J09-CLUB  ESPORTIU VINCIT-PROVEN\xC7ALENC,A"
       m_Image: {fileID: 0}
-    - m_Text: J10
+    - m_Text: "J10-ACCI\xD3 SANT MARTI ASSOC CC,B"
       m_Image: {fileID: 0}
-    - m_Text: J11
+    - m_Text: J11-CENTRE MONTSERRAT XAVIER 1904,B
       m_Image: {fileID: 0}
-    - m_Text: J12
+    - m_Text: J12-FUTSAL POLARIS FORT PIENC,B
       m_Image: {fileID: 0}
-    - m_Text: J13
+    - m_Text: J13-CARMELO-SUNLIFE F.S.,A
       m_Image: {fileID: 0}
-    - m_Text: J14
+    - m_Text: J14-CET10 (ESCOLA BAC DE RODA),C
       m_Image: {fileID: 0}
-    - m_Text: J15
+    - m_Text: J15-PLAZA MACAEL CCA,A
       m_Image: {fileID: 0}
-    - m_Text: J16
+    - m_Text: J16-SANT ANDREU, A.E.,C
       m_Image: {fileID: 0}
-    - m_Text: J17
+    - m_Text: J17-HORTA, U.AT.,A
       m_Image: {fileID: 0}
-    - m_Text: J18
+    - m_Text: J18-PROSPERITAT NOU BARRIS CLUB ESP. FUTBOL SALA,B
       m_Image: {fileID: 0}
-    - m_Text: J19
+    - m_Text: J19-LES GLORIES 2014 CLUB FUTBOL SALA,B
       m_Image: {fileID: 0}
-    - m_Text: J20
+    - m_Text: "J20-GR\xC0CIA FUTBOL SALA CLUB,B"
       m_Image: {fileID: 0}
-    - m_Text: J21
+    - m_Text: J21-THAU, C.E.,A
       m_Image: {fileID: 0}
-    - m_Text: J22
+    - m_Text: J22-IPSE EL PILAR, C.E.,A
       m_Image: {fileID: 0}
-    - m_Text: J23
+    - m_Text: J23-CASP, A.E.,A
       m_Image: {fileID: 0}
-    - m_Text: J24
+    - m_Text: "J24-CLUB  ESPORTIU VINCIT-PROVEN\xC7ALENC,A"
       m_Image: {fileID: 0}
-    - m_Text: J25
+    - m_Text: "J25-ACCI\xD3 SANT MARTI ASSOC CC,B"
       m_Image: {fileID: 0}
-    - m_Text: J26
+    - m_Text: J26-CENTRE MONTSERRAT XAVIER 1904,B
       m_Image: {fileID: 0}
-    - m_Text: J27
+    - m_Text: J27-FUTSAL POLARIS FORT PIENC,B
       m_Image: {fileID: 0}
-    - m_Text: J28
+    - m_Text: J28-CARMELO-SUNLIFE F.S.,A
       m_Image: {fileID: 0}
-    - m_Text: J29
+    - m_Text: J29-CET10 (ESCOLA BAC DE RODA),C
       m_Image: {fileID: 0}
-    - m_Text: J30
+    - m_Text: J30-PLAZA MACAEL CCA,A
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1391,14 +1391,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDropdown: {fileID: 373809605}
-  mToggle: {fileID: 0}
-  mMatches: 30
-  mStoppedTIme: 0
-  mMaxTimeStopped: 20
-  mMaxTimeRunned: 1
-  mGroupURL: http://fcf.cat/classificacio/1920/futbol-sala/lliga-tercera-divisio-catalana-futbol-sala/bcn-gr-3
-  scene: 1
-  loadingText: {fileID: 583066984}
 --- !u!1 &1525861096
 GameObject:
   m_ObjectHideFlags: 0
