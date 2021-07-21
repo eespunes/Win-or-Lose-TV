@@ -1,0 +1,652 @@
+fileFormatVersion: 2
+guid: d6ed15a7d8ca4af4f828dfa110e2ae94
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5769121489947401494
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_0
+  - first:
+      213: 8038821538173527063
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_1
+  - first:
+      213: -5054262343093500259
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_2
+  - first:
+      213: 6988342974781256905
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_3
+  - first:
+      213: 4081368159355020302
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_4
+  - first:
+      213: -7067089469375455320
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_5
+  - first:
+      213: 1988142566928050731
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_6
+  - first:
+      213: 2135831664538381510
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_7
+  - first:
+      213: 5991727341487289468
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_8
+  - first:
+      213: -3851515851534573585
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_9
+  - first:
+      213: 3028758658800468551
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_10
+  - first:
+      213: -6780856043947658964
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_11
+  - first:
+      213: 2073416346743020111
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_12
+  - first:
+      213: -1596180339825313061
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_13
+  - first:
+      213: 2059151777145197979
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_14
+  - first:
+      213: -137123772686493883
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_15
+  - first:
+      213: 6658713948787686621
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_16
+  - first:
+      213: 8333086761017106257
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_17
+  - first:
+      213: -815448893673252894
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_18
+  - first:
+      213: -7574490812138237660
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_19
+  - first:
+      213: 3144604641395744205
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_20
+  - first:
+      213: -368175580506410683
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_21
+  - first:
+      213: 5921038036788044407
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_22
+  - first:
+      213: 377404046990350306
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_23
+  - first:
+      213: 1170513348098083534
+    second: PC Computer - Yooka-Laylee - Xbox Controller Buttons_24
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 272
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61d1362dd69001050800000000000000
+      internalID: 5769121489947401494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_1
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 274
+        width: 124
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 714a793f891af8f60800000000000000
+      internalID: 8038821538173527063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_2
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 272
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9647467d27abd9b0800000000000000
+      internalID: -5054262343093500259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_3
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 272
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c4fe64e8e49bf060800000000000000
+      internalID: 6988342974781256905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_4
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 272
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0422f787bee3a830800000000000000
+      internalID: 4081368159355020302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_5
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 272
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8afd8f51297aced90800000000000000
+      internalID: -7067089469375455320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_6
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 272
+        width: 120
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2a6498812d479b10800000000000000
+      internalID: 1988142566928050731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 136
+        width: 232
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742c03004ff480a20800000000000000
+      internalID: 3028758658800468551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_11
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 136
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c217073ca5f85e1a0800000000000000
+      internalID: -6780856043947658964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_12
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 138
+        width: 129
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4a1b139e2146cc10800000000000000
+      internalID: 2073416346743020111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_13
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 136
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdaff37107a39d9e0800000000000000
+      internalID: -1596180339825313061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_14
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 136
+        width: 120
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b959a57a1a3939c10800000000000000
+      internalID: 2059151777145197979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_15
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 136
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54792ceb7a6d81ef0800000000000000
+      internalID: -137123772686493883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_19
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 235
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4215a0cdcb002e690800000000000000
+      internalID: -7574490812138237660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_20
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd1071b241e3ab20800000000000000
+      internalID: 3144604641395744205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_21
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54131fc924af3eaf0800000000000000
+      internalID: -368175580506410683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_22
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 772e35439b0cb2250800000000000000
+      internalID: 5921038036788044407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_23
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e797ad2bfecc3500800000000000000
+      internalID: 377404046990350306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Yooka-Laylee - Xbox Controller Buttons_24
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca4d3e30bf7e3010800000000000000
+      internalID: 1170513348098083534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,6 +1,0 @@
-Local Team	ATLETIC LA PALMA  ASSOCIACIO ESPORTIVA ,A
-Stopped Time	false
-Maximum Stopped Time	20
-Maximum Time	25
-Table URL	http://fcf.cat/classificacio/1920/futbol-sala/lliga-tercera-divisio-catalana-futbol-sala/bcn-gr-3
-Season URL	http://fcf.cat/calendari/1920/futbol-sala/lliga-tercera-divisio-catalana-futbol-sala/bcn-gr-3
