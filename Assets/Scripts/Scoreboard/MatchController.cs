@@ -95,7 +95,7 @@ namespace Scoreboard
 
         private void OnTimeout()
         {
-            if (PressingButtonCondition())
+            if (_scoreboardGui.CanPressButton)
                 StartTimeout();
         }
 

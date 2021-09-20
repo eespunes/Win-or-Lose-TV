@@ -279,26 +279,11 @@ public class ScoreboardGUI : MonoBehaviour
         yield return WaitingToStopMasterVideoplayer();
 
         ChangeVideo(_videosDict["Default"], null);
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(5f);
         ChangeVideo(_videosDict["Pre Match"], _sponsorVideosDict["Pre Match"]);
         yield return WaitingToStopMasterVideoplayer();
         ChangeVideo(_videosDict["Default"], null);
-        
-        yield return new WaitForSeconds(4f);
-        
-        animator.SetBool(PlayersAway, true);
-        ChangeVideo(_videosDict["Players Away"], _sponsorVideosDict["Players Away"]);
-        yield return WaitingToStopMasterVideoplayer();
-        
-        ChangeVideo(_videosDict["Default"], null);
-        yield return new WaitForSeconds(5);
-        
-        animator.SetBool(PlayersHome, true);
-        ChangeVideo(_videosDict["Players Home"], _sponsorVideosDict["Players Home"]);
-        yield return WaitingToStopMasterVideoplayer();
-        
-        ChangeVideo(_videosDict["Default"], null);
-        
+
         if (MatchConfig.GetInstance().ShowTable)
         {
             yield return new WaitForSeconds(5);
@@ -308,20 +293,29 @@ public class ScoreboardGUI : MonoBehaviour
             yield return WaitingToStopMasterVideoplayer();
             tableRenderer.gameObject.SetActive(false);
             transform.GetChild(3).gameObject.SetActive(false);
+
+            ChangeVideo(_videosDict["Default"], null);
         }
-        
+
+        if (MatchConfig.GetInstance().ShowSponsors)
+        {
+            yield return new WaitForSeconds(5f);
+
+            ChangeVideo(_sponsorVideosDict["Sponsor Big"], null);
+            yield return WaitingToStopMasterVideoplayer();
+        }
+
         _matchController.IntroPressed = true;
         CanPressButton = true;
         ChangeVideo(_videosDict["Default"], null);
-        
+
         yield return new WaitForSeconds((_audioSource.clip.samples - _audioSource.timeSamples) /
                                         (_audioSource.clip.frequency * 1f));
-        
+
         // InvokeRepeating(nameof(IncreaseSong), 0, .1f);
         _audioSource.clip = loopAudio;
         _audioSource.loop = true;
         _audioSource.Play();
-        
     }
 
     public IEnumerator HalfMatch()
@@ -344,6 +338,15 @@ public class ScoreboardGUI : MonoBehaviour
         animator.SetBool(EndTime, true);
         ChangeVideo(_videosDict["Half Time"], _sponsorVideosDict["Half Time"]);
         yield return WaitingToStopMasterVideoplayer();
+
+        if (MatchConfig.GetInstance().ShowSponsors)
+        {
+            ChangeVideo(_sponsorVideosDict["Sponsor Big"], null);
+            yield return WaitingToStopMasterVideoplayer();
+            ChangeVideo(_videosDict["Default"], null);
+        }
+
+
         if (MatchConfig.GetInstance().ShowTable)
         {
             animator.SetBool(EndTime, false);
@@ -355,9 +358,10 @@ public class ScoreboardGUI : MonoBehaviour
             tableRenderer.gameObject.SetActive(false);
             transform.GetChild(3).gameObject.SetActive(false);
             animator.SetBool(EndTime, true);
-            ChangeVideo(_videosDict["Half Time"], _sponsorVideosDict["Half Time"]);
-            yield return WaitingToStopMasterVideoplayer();
         }
+
+        ChangeVideo(_videosDict["Half Time"], _sponsorVideosDict["Half Time"]);
+        yield return WaitingToStopMasterVideoplayer();
 
         matchPart.text = "2ª PARTE";
         _matchController.IntroPressed = true;
@@ -376,6 +380,7 @@ public class ScoreboardGUI : MonoBehaviour
         InvokeRepeating(nameof(IncreaseSong), .25f, .25f);
 
         yield return new WaitForSeconds(30);
+
         if (MatchConfig.GetInstance().ShowTable)
             _tableGenerator.UpdateTable();
 
@@ -385,6 +390,14 @@ public class ScoreboardGUI : MonoBehaviour
 
         animator.SetBool(EndTime, false);
         ChangeVideo(_videosDict["Default"], null);
+
+        if (MatchConfig.GetInstance().ShowSponsors)
+        {
+            ChangeVideo(_sponsorVideosDict["Sponsor Big"], null);
+            yield return WaitingToStopMasterVideoplayer();
+            ChangeVideo(_videosDict["Default"], null);
+        }
+
         yield return new WaitForSeconds(5);
         if (MatchConfig.GetInstance().ShowTable)
         {
@@ -404,7 +417,6 @@ public class ScoreboardGUI : MonoBehaviour
         _audioSource.Play();
         ChangeVideo(_videosDict["Outro"], null);
         yield return WaitingToStopMasterVideoplayer();
-        ChangeVideo(_videosDict["Default"], null);
 
         SceneManager.LoadScene("MainMenu");
     }
@@ -619,7 +631,7 @@ public class ScoreboardGUI : MonoBehaviour
             sponsorVideoPlayer.targetMaterialRenderer.gameObject.SetActive(false);
             sponsorVideoPlayer.gameObject.SetActive(false);
         }
-        else
+        else if (MatchConfig.GetInstance().ShowSponsors)
         {
             ChangeVideoSponsor(sponsorVideoClip);
         }
@@ -630,7 +642,8 @@ public class ScoreboardGUI : MonoBehaviour
 
     public void ChangeVideoOverlay(string videoClip, string sponsorVideoClip)
     {
-        ChangeVideoSponsor(sponsorVideoClip);
+        if (MatchConfig.GetInstance().ShowSponsors)
+            ChangeVideoSponsor(sponsorVideoClip);
         overlayVideoPlayer.url = videoClip;
         overlayVideoPlayer.Play();
     }

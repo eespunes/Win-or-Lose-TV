@@ -57,6 +57,8 @@ public class MainMenu : MonoBehaviour
                                                 bool.Parse(PlayerPrefs.GetString("Stopped Time"));
         MatchConfig.GetInstance().ShowTable = PlayerPrefs.GetString("Show Table").Length > 0 &&
                                               bool.Parse(PlayerPrefs.GetString("Show Table"));
+        MatchConfig.GetInstance().ShowSponsors = PlayerPrefs.GetString("Show Sponsors").Length > 0 &&
+                                              bool.Parse(PlayerPrefs.GetString("Show Sponsors"));
         MatchConfig.GetInstance().MaxTime = PlayerPrefs.GetInt("Maximum Time");
 
         MatchConfig.GetInstance().TableURL = PlayerPrefs.GetString("Table URL");

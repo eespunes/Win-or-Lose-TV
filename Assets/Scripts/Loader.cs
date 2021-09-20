@@ -32,10 +32,6 @@ public class Loader
             Application.dataPath + "/Videos/Season/" + MatchConfig.GetInstance().Match + "_goal_home.webm");
         dict.Add("Away Goal",
             Application.dataPath + "/Videos/Season/" + MatchConfig.GetInstance().Match + "_goal_away.webm");
-        dict.Add("Players Home",
-            Application.dataPath + "/Videos/Season/" + MatchConfig.GetInstance().Match + "_players_home.mp4");
-        dict.Add("Players Away",
-            Application.dataPath + "/Videos/Season/" + MatchConfig.GetInstance().Match + "_players_away.mp4");
         dict.Add("Timeout", Application.dataPath + "/Videos/General/Timeout.webm");
         dict.Add("Home Team", Application.dataPath + "/Videos/General/Home Team.webm");
         dict.Add("Table", Application.dataPath + "/Videos/Table/Table.mp4");
@@ -46,30 +42,27 @@ public class Loader
     public static Dictionary<string, string> LoadSponsorVideos()
     {
         var dict = new Dictionary<string, string>();
+        dict.Add("Sponsor Big", Application.dataPath + "/Videos/Sponsor/Sponsor_Big.mp4");
         dict.Add("Bottom",
-            Application.dataPath + "/Videos/Season/bottom_sponsor.webm");
+            Application.dataPath + "/Videos/Sponsor/bottom_sponsor.webm");
         dict.Add("Upper Intro",
-            Application.dataPath + "/Videos/Season/upper_intro_sponsor.webm");
+            Application.dataPath + "/Videos/Sponsor/upper_intro_sponsor.webm");
         dict.Add("Upper Loop",
-            Application.dataPath + "/Videos/Season/upper_loop_sponsor.webm");
+            Application.dataPath + "/Videos/Sponsor/upper_loop_sponsor.webm");
         dict.Add("Upper Outro",
-            Application.dataPath + "/Videos/Season/upper_outro_sponsor.webm");
+            Application.dataPath + "/Videos/Sponsor/upper_outro_sponsor.webm");
         dict.Add("Pre Match",
-            Application.dataPath + "/Videos/Season/pre_sponsor.webm");
+            Application.dataPath + "/Videos/Sponsor/pre_sponsor.webm");
         dict.Add("End Match",
-            Application.dataPath + "/Videos/Season/end_sponsor.webm");
+            Application.dataPath + "/Videos/Sponsor/end_sponsor.webm");
         dict.Add("Half Time",
-            Application.dataPath + "/Videos/Season/half_sponsor.webm");
+            Application.dataPath + "/Videos/Sponsor/half_sponsor.webm");
         dict.Add("Home Goal",
-            Application.dataPath + "/Videos/Season/goal_home_sponsor.webm");
+            Application.dataPath + "/Videos/Sponsor/goal_home_sponsor.webm");
         dict.Add("Away Goal",
-            Application.dataPath + "/Videos/Season/goal_away_sponsor.webm");
-        dict.Add("Players Home",
-            Application.dataPath + "/Videos/Season/players_home_sponsor.webm");
-        dict.Add("Players Away",
-            Application.dataPath + "/Videos/Season/players_away_sponsor.webm");
-        dict.Add("Timeout", Application.dataPath + "/Videos/General/Timeout_sponsor.webm");
-        dict.Add("Table", Application.dataPath + "/Videos/Table/Table_sponsor.webm");
+            Application.dataPath + "/Videos/Sponsor/goal_away_sponsor.webm");
+        dict.Add("Timeout", Application.dataPath + "/Videos/Sponsor/Timeout_sponsor.webm");
+        dict.Add("Table", Application.dataPath + "/Videos/Sponsor/Table_sponsor.webm");
 
         return dict;
     }

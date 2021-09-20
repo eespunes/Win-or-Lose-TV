@@ -19,6 +19,7 @@ public class MatchConfig
     
     public string ResultURL { get; set; }
     public bool ShowTable { get; set; }
+    public bool ShowSponsors { get; set; }
 
     private MatchConfig()
     {

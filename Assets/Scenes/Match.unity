@@ -17812,6 +17812,10 @@ PrefabInstance:
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 1735298390}
+    - target: {fileID: 2027281165, guid: deb3a08fa0d7ae34293b6810412a15f2, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 88158100094442156, guid: deb3a08fa0d7ae34293b6810412a15f2,
         type: 3}
       propertyPath: m_TargetMaterialRenderer
@@ -18032,6 +18036,11 @@ PrefabInstance:
       propertyPath: m_TargetMaterialRenderer
       value: 
       objectReference: {fileID: 1439904158}
+    - target: {fileID: 7314734691879741275, guid: deb3a08fa0d7ae34293b6810412a15f2,
+        type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7866241184779713075, guid: deb3a08fa0d7ae34293b6810412a15f2,
         type: 3}
       propertyPath: m_TargetMaterialRenderer
